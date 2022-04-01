@@ -1,0 +1,20 @@
+{# templates/about.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title%}About{% endblock %}
+
+{% block content %}
+    <img src="{{ absolute_url('images/mvc_640.jpg') }}" alt="MVC"/>
+
+    <h1>Kursen omfattar följande områden:</h1>
+    <ul>
+    <li>Programmering i webbmiljö, syntax, semantik, koppling mot databaser, datastrukturer och inbyggda funktioner.</li>
+    <li>Objektorienterad programmering i PHP med språkkonstruktioner och begrepp. Objektorientering som sätt att strukturera och återanvända kod. Enkla designmönster.</li>
+    <li>SQL med en databas tillsammans med PHP Data Objects.</li>
+    <li>Utveckling av webbapplikationer i ett ramverk där tekniker såsom webbserver (Apache), PHP, HTML, CSS, och SQL integreras tillsammans med ett webbaserat ramverk.</li>
+    <li>Användning av verktyg och tekniker som lämpar sig för utveckling av webbapplikationer, tex UNIX/Linux, installation på extern webbserver, ssh, ftp/sftp, databasklienter såsom PHPMyAdmin, MySQL Workbench och kommandoklienter.</li>
+    </ul>
+    <a href="https://github.com/dbwebb-se/mvc">Github</a>
+
+{% endblock content %}

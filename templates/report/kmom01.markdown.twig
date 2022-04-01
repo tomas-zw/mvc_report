@@ -1,0 +1,63 @@
+# Kmom01
+***
+
+## Berätta kort om dina förkunskaper och tidigare erfarenheter kring objektorientering.
+
+Mina tidigare förkunskaper kommer främst från OOPython kursen och det var en riktigt
+bra kurs så har bara bra erfarenheter av OO. Eller, njaa, med ett undantag.
+Klassdiagram i UML gör jag med samma entusiasm som jag öppnar räkningar.
+
+## Berätta kort om PHPs modell för klasser och objekt.
+
+Just PHP's modell vet jag inte om den skiljer så mycket från iaf Python (svårt
+att svara på när jag inte jobbat med OO i PHP). Men en sak jag såg som jag tyckte
+var lite märklig var att en klass property och method har separata namespaces.
+Har ingen aning om varför man skulle vilja skriva koden med samma namn på en property
+och method (känns spontant att det blir svårläst) och det kanske funkar så även
+i andra språk, man jag bara missat det.  
+```PHP
+class EnKlass
+{
+    public $var = 'badanka';
+
+    public function enMetod() {
+        //......
+    }
+}
+```
+Ovanstående definerar en väldigt simpel klass.
+```PHP
+$a = new EnKlass();
+echo $a->var;
+
+```
+Skapar en instans av klassen 'EnKlass' och skriver ut.
+```
+'badanka'
+```
+
+## Reflektioner över kodbasen i me/report.
+
+Strukturen följer ett mönster som vi använd ända sedan Webtec kursen så det 
+börjar kännas mer och mer som 'hemma' så att byta till nytt språk/ramverk är 
+betydligt mycket lättare nu jämfört med tidigare.  
+Mina första intryck är att jag verkligen gillade namnade Annotations, det var 
+super smidigt. Det andra var template inheritance och include och möjligheten 
+att kombinera dom för lättare strukturera och återanvända kod.  
+Så för att sammanfatta, så även om det är nytt så känns det ändå bekant.
+
+## “PHP The Right Way”
+
+Att PHP och UTF-8 inte alltid leker så bra ihop utan att installera mb_* extensions
+var nått jag reagerade på. Under någon kurs (tror det var Webtec) så hade jag 
+bekymmer just med detta på min PHP installation i Linux. Min lösning då var att 
+göra kursen på en Win burk där det funkade. Nu tror jag att jag vet varför det 
+inte funkade iaf.  
+Att hoppa mellan språk gör att jag lätt glömmer syntaxen så ['The Basics'](https://phptherightway.com/pages/The-Basics.html) hamnade direkt i mina bokmärken.
+
+## TIL
+
+Att jag ska vara rädd om och spara undan/skapa remote repo, min kod från tidigare
+kurser. Min kod från Design kursen sparade mig många timmar med att fräsha upp 
+minnet om Twig etc.
+
