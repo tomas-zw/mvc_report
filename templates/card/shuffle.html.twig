@@ -6,6 +6,14 @@
 
 {% block content %}
 
-        <p> Deck = {{ deck_as_string}}</p>
+    <div class='card-grid'>
+    {% for card in deck.deck %}
+       {% set suit = card.getColor() %}
+            <div class='card {{ suit }}'>
+                <p>{{ card.getValue() }}</p>
+                <p class='suits'>{{ suits[suit] }}</p>
+            </div>
+    {% endfor %}
+    </div>
 
 {% endblock content %}

@@ -10,6 +10,12 @@ use App\Card\Deck;
 
 class CardControllerTwig extends AbstractController
 {
+    public $suits = [
+        'hearts' => '♥',
+        'diamonds' => '♦',
+        'clubs' => '♣',
+        'spades' => '♠',
+    ];
     /**
     * @Route(
     *    "/card",
@@ -30,7 +36,8 @@ class CardControllerTwig extends AbstractController
     {
         $deck = new Deck();
         $data = [
-            'deck_as_string' => $deck->getAsString()
+            'deck' => $deck,
+            'suits' => $this->suits
         ];
 
         return $this->render('card/deck.html.twig', $data);
@@ -46,7 +53,8 @@ class CardControllerTwig extends AbstractController
         $deck = new Deck();
         $deck->shuffleDeck();
         $data = [
-            'deck_as_string' => $deck->getAsString()
+            'deck' => $deck,
+            'suits' => $this->suits
         ];
 
         return $this->render('card/shuffle.html.twig', $data);
