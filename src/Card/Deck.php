@@ -21,30 +21,13 @@ class Deck
         }
     }
 
-    // public function add(Dice $die): void
-    // {
-    //     $this->hand[] = $die;
-    // }
-    //
-    // public function getAsHtml(): string
-    // {
-    //     foreach ($this->hand as $die) {
-    //         $die->roll();
-    //     }
-    // }
+    public function drawCard(): Card | Null
+    {
+        return array_pop($this->deck);
+    }
 
     public function shuffleDeck(): void
     {
         shuffle($this->deck);
     }
-
-    public function getAsString(): string
-    {
-        $str = "";
-        foreach ($this->deck as $card) {
-            $str .= $card->getAsString();
-        }
-        return $str;
-    }
 }
-

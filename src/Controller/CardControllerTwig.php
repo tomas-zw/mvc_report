@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Card\Deck;
@@ -15,6 +17,7 @@ class CardControllerTwig extends AbstractController
         'diamonds' => '♦',
         'clubs' => '♣',
         'spades' => '♠',
+        'blank' => '✱',
     ];
     /**
     * @Route(
@@ -48,9 +51,10 @@ class CardControllerTwig extends AbstractController
     *    "/card/deck/shuffle",
     *    name="card_deck_shuffle")
      */
-    public function shuffle(): Response
+    public function shuffle(SessionInterface $session): Response
     {
         $deck = new Deck();
+        $session->set('deck', $deck);
         $deck->shuffleDeck();
         $data = [
             'deck' => $deck,
@@ -58,5 +62,25 @@ class CardControllerTwig extends AbstractController
         ];
 
         return $this->render('card/shuffle.html.twig', $data);
+    }
+
+    /**
+    * @Route(
+    *    "/card/deck/draw",
+    *    name="card_deck_draw")
+     */
+    public function draw(SessionInterface $session): Response
+    {
+        $deck = $session->get('deck') ?? new Deck();
+        $deck->shuffleDeck();
+        $card = $deck->drawCard();
+        $session->set('deck', $deck);
+        $data = [
+            'deck' => $deck,
+            'card' => $card,
+            'suits' => $this->suits
+        ];
+
+        return $this->render('card/draw.html.twig', $data);
     }
 }

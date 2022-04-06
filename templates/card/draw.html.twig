@@ -1,0 +1,27 @@
+{# templates/home.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title%}Draw{% endblock %}
+
+{% block content %}
+
+    {% if card %}
+        <div class='card-grid'>
+           {% set suit = card.getColor() %}
+            <div class='card {{ suit }}'>
+                <p>{{ card.getValue() }}</p>
+                <p class='suits'>{{ suits[suit] }}</p>
+            </div>
+        {% for card in deck.deck %}
+                <div class='card'>
+                    <p class='suits'>{{ suits['blank'] }}</p>
+                </div>
+        {% endfor %}
+        </div>
+    {% else %}
+        <p>Empty Deck</p>
+        <p><a href="{{ path('card_deck_shuffle') }}">Shuffle deck for new cards.</a></p>
+    {% endif %}
+
+{% endblock content %}

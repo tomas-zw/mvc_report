@@ -22,9 +22,4 @@ class Card
     {
         return $this->color;
     }
-
-    public function getAsString(): string
-    {
-        return "{$this->value} {$this->color}";
-    }
 }
