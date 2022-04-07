@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Card\Deck;
+use App\Card\DeckWith2Jokers;
 
 class CardControllerTwig extends AbstractController
 {
@@ -18,6 +19,7 @@ class CardControllerTwig extends AbstractController
         'clubs' => '♣',
         'spades' => '♠',
         'blank' => '✱',
+        'joker' => '🃏',
     ];
     /**
     * @Route(
@@ -26,8 +28,12 @@ class CardControllerTwig extends AbstractController
      */
     public function card(): Response
     {
+        $data = [
+            'link_to_draw_number'=> $this->generateUrl
+            ('card_deck_draw_number', ['number' =>1]),
+        ];
 
-        return $this->render('card/card.html.twig');
+        return $this->render('card/card.html.twig', $data);
     }
 
     /**
@@ -38,6 +44,22 @@ class CardControllerTwig extends AbstractController
     public function deck(): Response
     {
         $deck = new Deck();
+        $data = [
+            'deck' => $deck,
+            'suits' => $this->suits
+        ];
+
+        return $this->render('card/deck.html.twig', $data);
+    }
+
+    /**
+    * @Route(
+    *    "/card/deck2",
+    *    name="card_deck_2")
+     */
+    public function deck2(): Response
+    {
+        $deck = new DeckWith2Jokers();
         $data = [
             'deck' => $deck,
             'suits' => $this->suits

@@ -15,8 +15,7 @@ class Deck
     {
         foreach ($this->colors as $color) {
             foreach ($this->values as $value) {
-                $card = new Card($value, $color);
-                $this->deck[] = $card;
+                $this->addCard($value, $color);
             }
         }
     }
@@ -29,5 +28,11 @@ class Deck
     public function shuffleDeck(): void
     {
         shuffle($this->deck);
+    }
+
+    protected function addCard(string $value, string $color): void
+    {
+        $card = new Card($value, $color);
+        $this->deck[] = $card;
     }
 }
