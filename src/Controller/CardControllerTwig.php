@@ -10,6 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 use App\Card\Deck;
 use App\Card\DeckWith2Jokers;
+use App\Card\Game;
+use App\Card\player;
 
 class CardControllerTwig extends AbstractController
 {
@@ -30,7 +32,9 @@ class CardControllerTwig extends AbstractController
     {
         $data = [
             'link_to_draw_number'=> $this->generateUrl
-            ('card_deck_draw_number', ['number' =>1]),
+            ('card_deck_draw_number', ['number' =>3]),
+            'link_to_deal'=> $this->generateUrl
+            ('card_deck_deal', ['players' => 4, 'cards' => 5]),
         ];
 
         return $this->render('card/card.html.twig', $data);
@@ -131,5 +135,34 @@ class CardControllerTwig extends AbstractController
         ];
 
         return $this->render('card/drawNumber.html.twig', $data);
+    }
+    /**
+    * @Route(
+    *    "/card/deck/deal/{players}/{cards}",
+    *    name="card_deck_deal")
+     */
+    public function deal(int $players, int $cards): Response
+    {
+        $game = new Game($players);
+        $deck = new Deck();
+        $validGame = False;
+        if (($players * $cards) <= count($deck->deck)) {
+            $validGame = True;
+            $deck->shuffleDeck();
+            foreach ($game->getPlayers() as $player) {
+                for ($i = 0; $i < $cards; $i++) {
+                    $card = $deck->drawCard();
+                    $player->addCardToHand($card);
+                }
+            }
+        }
+        $data = [
+            'deck' => $deck,
+            'game' => $game,
+            'valid' => $validGame,
+            'suits' => $this->suits
+        ];
+
+        return $this->render('card/deal.html.twig', $data);
     }
 }

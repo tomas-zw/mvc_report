@@ -1,0 +1,39 @@
+{# templates/home.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title%}Deal{% endblock %}
+
+{% block content %}
+
+{% if valid %}
+    <div class='card-grid'>
+       {% set players = game.getPlayers() %}
+       {% set playerNr = 0 %}
+        {% for player in players %}
+        {% set playerNr = playerNr + 1 %}
+            <div>
+            {% for card in player.getHand() %}
+               {% set suit = card.getColor() %}
+                <div class='card {{ suit }}'>
+                    <p>{{ card.getValue() }}</p>
+                    <p class='suits'>{{ suits[suit] }}</p>
+                </div>
+            {% endfor %}
+            <p>Player: {{ playerNr }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class='card-grid'>
+        {% for card in deck.deck %}
+            <div class='card'>
+                <p class='suits'>{{ suits['blank'] }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Not enough cards for all players!</p>
+{% endif %}
+
+{% endblock content %}
