@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-
 use App\Card\Deck;
 use App\Card\DeckWith2Jokers;
 use App\Card\Game;
@@ -23,6 +22,7 @@ class CardControllerTwig extends AbstractController
         'blank' => '✱',
         'joker' => '🃏',
     ];
+
     /**
     * @Route(
     *    "/card",
@@ -31,10 +31,14 @@ class CardControllerTwig extends AbstractController
     public function card(): Response
     {
         $data = [
-            'link_to_draw_number'=> $this->generateUrl
-            ('card_deck_draw_number', ['number' =>3]),
-            'link_to_deal'=> $this->generateUrl
-            ('card_deck_deal', ['players' => 4, 'cards' => 5]),
+            'link_to_draw_number' => $this->generateUrl(
+                'card_deck_draw_number',
+                ['number' => 3]
+            ),
+            'link_to_deal' => $this->generateUrl(
+                'card_deck_deal',
+                ['players' => 4, 'cards' => 5]
+            ),
         ];
 
         return $this->render('card/card.html.twig', $data);
@@ -145,9 +149,9 @@ class CardControllerTwig extends AbstractController
     {
         $game = new Game($players);
         $deck = new Deck();
-        $validGame = False;
+        $validGame = false;
         if (($players * $cards) <= count($deck->deck)) {
-            $validGame = True;
+            $validGame = true;
             $deck->shuffleDeck();
             foreach ($game->getPlayers() as $player) {
                 for ($i = 0; $i < $cards; $i++) {

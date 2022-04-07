@@ -20,7 +20,7 @@ class Deck
         }
     }
 
-    public function drawCard(): Card | Null
+    public function drawCard(): Card | null
     {
         return array_pop($this->deck);
     }
