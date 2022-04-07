@@ -1,0 +1,11 @@
+{# templates/report.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title%}Game Report{% endblock %}
+
+{% block content %}
+
+    {{ include('game/game.markdown.twig')|markdown_to_html }}
+
+{% endblock content %}
