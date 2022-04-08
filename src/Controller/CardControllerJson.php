@@ -9,7 +9,6 @@ use App\Card\Deck;
 
 class CardControllerJson
 {
-
     /**
     * @Route(
     * "card/api/deck",
