@@ -1,4 +1,63 @@
 # Kmom02
 ***
 
-## ienioen
+## Objektorienterade konstruktioner.
+
+### Arv
+
+När en klass(subklass) ärver en annan klass(basklass) så får den samma egenskaper.
+I min kod tex så ärver DeckWith2Jokers från Deck. Subklassen har allt som 
+(använder tom basklassens konstruktor) som basklassen har plus lite extra. I 
+detta fallet är enda skillnaden att subklassen har 2 kort extra (Jokrarna).
+
+### Komposition
+
+Är när en klass har en medlems variabel som är en annan klass. tex i detta Kmom
+så har Deck en lista med Card. Deck är ganska så meningslös utan Card, men ett 
+Card har mening utan att tillhöra en Deck.  
+(is-a) och (has-a) från exemplen tycker jag beskriver det tydligt.  
+(is-a) är Arv: DeckWith2Jokers (is-a) Deck.  
+(has-a) är Komposition: Deck (has-a) Card.
+
+### Trait
+
+Detta är lite oklart men som jag förstått det så är det mer eller mindre som 
+att importera en modul fast på Klass nivå. Så alla instanser av den klassen 
+kommer ha tillgång till 'modulen' trots att den inte finns i själva klassen.
+
+### Interface
+
+Detta är också oklart. Jag förstår det som att det som att om man väljer att 
+implementera ett interface så förbinder man sig att uppfylla alla krav (metoder?)
+som interfacet har. Hur man löser kraven verkar kvitta så länga dom uppfylls.  
+Varför detta är bra är ännu mer oklart.
+
+## Min implementation.
+
+Nöjd eller missnöjd? - Jag vet ärligt inte.  
+Jag är inte helt nöjd men samtidigt är jag inte helt missnöjd heller.  
+Klasserna är nog iaf det jag är mest nöjd med. Dom är enkla och metoderna 
+är tydliga i vad dom gör och lätta att förstå (dom flesta är bara en rad kod).  
+Min CSS höll jag också ganska simpel med ett grid för att ploppa in alla kort. 
+En klar förbättring hade varit att ha nån eller några media queries, för just nu 
+ger en mobil vy en minst sagt begränsad vy av korten. CSS har inte varit mitt 
+främsta focus hittills i kursen, så är en TODO till jag är mer bekväm med 
+Symfony.
+
+## Psuedokod.
+
+Psuedokod är något jag faktiskt använder ofta. Mitt vanliga sätt så skriver jag 
+det helst på papper med en hel del små anteckningar och 'kom ihåg', 'tänk på' etc.
+Dom dokumenten är främst för mina ögon och tror nog att dom är mer eller 
+mindre obegripliga för andra. Ett ordnat Kaos är nog en bra beskrivning.  
+Detta var första gången jag gjorde det så att någon annan ska förstå. Men känner 
+att så länge jag inte är tvungen så kommer jag hålla mig till mitt sätt.  
+Det passar mig bättre med ett mer levande dokument som bara behöver förhålla sig 
+till reglerna som jag själv satt upp.
+
+
+## TIL
+
+Att PHP inte är så dumt ändå.  
+I tidigare kurser med PHP har inte alls gillat det. Har inget bra svar på varför 
+och vad som jag inte gillade. Minns bara att jag tyckte så.
