@@ -18,12 +18,17 @@ class Player
         return $this->hand;
     }
 
-    public function getValue(): int
+    public function getHandValue(): int
     {
         $handValue = 0;
         foreach ($this->hand as $card) {
             $handValue += (int) $card->getValue();
         }
         return $handValue;
+    }
+
+    public function resetHand(): void
+    {
+        $this->hand = [];
     }
 }

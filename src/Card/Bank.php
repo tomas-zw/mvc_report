@@ -8,7 +8,7 @@ class Bank extends Player
 {
     public function drawOrNot(): bool
     {
-        if ($this->getValue() < 17) {
+        if ($this->getHandValue() < 17) {
             return true;
         }
         return false;
