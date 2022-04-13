@@ -6,10 +6,13 @@ use App\Card\Card;
 
 class Deck
 {
-    public $deck = [];
     // private $deck = [];
 
+    /** @var array<int, Card> */
+    public $deck = [];
+    /** @var array<int, string> */
     private $colors = ['clubs', 'diamonds', 'hearts', 'spades'];
+    /** @var array<int, string> */
     private $values = ['2', '3', '4', '5','6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
     public function __construct()

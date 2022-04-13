@@ -6,6 +6,7 @@ use App\Card\Player;
 
 class Game
 {
+    /** @var array<int, Player> */
     private $players = [];
 
     public function __construct(int $nrOfPlayers)
@@ -15,7 +16,8 @@ class Game
         }
     }
 
-    public function getPlayers(): array
+    /** @return array<int, Player> */
+    public function getPlayers()
     {
         return $this->players;
     }

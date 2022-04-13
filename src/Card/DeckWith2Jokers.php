@@ -6,6 +6,7 @@ use App\Card\Deck;
 
 class DeckWith2Jokers extends Deck
 {
+    /** @var array<int, string> */
     private $jokers = ['joker', 'joker'];
 
     public function __construct()

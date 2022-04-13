@@ -14,6 +14,7 @@ use App\Card\Player;
 
 class CardControllerTwig extends AbstractController
 {
+    /** @var array<string, string> */
     public $suits = [
         'hearts' => '♥',
         'diamonds' => '♦',
