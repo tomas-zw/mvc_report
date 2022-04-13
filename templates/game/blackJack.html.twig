@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title%}blackJack{% endblock %}
+
+{% block content %}
+    <div class='card-grid'>
+        <p>Spelare</p>
+        {% for card in player.getHand() %}
+           {% set suit = card.getColor() %}
+            <div class='card {{ suit }}'>
+                <p>{{ card.getValue() }}</p>
+                <p class='suits'>{{ suits[suit] }}</p>
+            </div>
+        {% endfor %}
+        <p>{{ msg }}</p>
+    </div>
+
+    <div class='card-grid'>
+        <p>Bank</p>
+        {% for card in bank.getHand() %}
+           {% set suit = card.getColor() %}
+            <div class='card {{ suit }}'>
+                <p>{{ card.getValue() }}</p>
+                <p class='suits'>{{ suits[suit] }}</p>
+            </div>
+        {% endfor %}
+        <p>{{ msg }}</p>
+    </div>
+
+{% endblock content %}
+

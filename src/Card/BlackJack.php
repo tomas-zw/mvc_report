@@ -17,9 +17,30 @@ class BlackJack
         $this->bank = $bank;
     }
 
+    public function getPlayer(): Player
+    {
+        return $this->player;
+    }
+
+    public function getBank(): Bank
+    {
+        return $this->bank;
+    }
+
+    public function getCurrentPlayer(): Player
+    {
+        return $this->currentPlayer;
+    }
+
+    public function getMsg(): string
+    {
+        return $this->msg;
+    }
+
     public function addDeck(Deck $deck): void
     {
         $this->deckOfCards = $deck;
+        $this->deckOfCards->shuffleDeck();
     }
 
     public function newGame(Deck $deck): void
@@ -35,6 +56,6 @@ class BlackJack
         $this->bank->resetHand();
         $this->bank->addCardToHand($this->deckOfCards->drawCard());
 
-        $this->msg = "Du har ${$this->player->getHandValue()} poang.\n";
+        $this->msg = "Du har {$this->player->getHandValue()} poang.\n";
     }
 }
