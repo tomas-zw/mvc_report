@@ -8,6 +8,7 @@ class Deck
 {
     public $deck = [];
     // private $deck = [];
+
     private $colors = ['clubs', 'diamonds', 'hearts', 'spades'];
     private $values = ['2', '3', '4', '5','6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 

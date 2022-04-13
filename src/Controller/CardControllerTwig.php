@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Card\Deck;
 use App\Card\DeckWith2Jokers;
 use App\Card\Game;
-use App\Card\player;
+use App\Card\Player;
 
 class CardControllerTwig extends AbstractController
 {
