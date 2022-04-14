@@ -27,11 +27,13 @@
 
     </div>
     <form method="post">
-    <legend>Choose an action</legend>
-
-        <button type="submit" name="newCard" value="1">New Card</button>
-        <button type="submit" name="noCard" value="1">Stop</button>
-        <button type="submit" name="newGame" value="1">New Game</button>
+    <h3>Välj</h3>
+        {% if msg.winner %}
+            <button type="submit" name="newGame" value="1">Nytt spel</button>
+        {% else %}
+            <button type="submit" name="newCard" value="1">Kort</button>
+            <button type="submit" name="noCard" value="1">Stanna</button>
+        {% endif %}
 
     </form>
 

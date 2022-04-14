@@ -42,11 +42,6 @@ class BlackJack
         return $this->bank;
     }
 
-    public function getCurrentPlayer(): Player
-    {
-        return $this->currentPlayer;
-    }
-
     /** @return array<string, string> */
     public function getMsg()
     {
@@ -88,9 +83,12 @@ class BlackJack
         if ($this->winner || $this->startNewGame) {
             $this->newGame();
         } elseif ($this->drawNewCard) {
+            $this->drawNewCard = false;
             if ($this->currentPlayer == $this->player) {
                 $this->givePlayerCard();
-            } else {
+            // PHPmd doesn't like else
+            } elseif ($this->currentPlayer == $this->bank) {
+            // } else {
                 $this->whoWon();
             }
         }
@@ -101,12 +99,9 @@ class BlackJack
         $bankValue = $this->bank->getHandValue();
         $playerValue = $this->player->getHandValue();
         $this->bankMsg = "Banken har {$bankValue} poäng.\n";
-        if ($bankValue > 21) {
-            $this->winner = 'Spelaren';
-        } elseif ($bankValue >= $playerValue) {
+        $this->winner = 'Spelaren';
+        if ($bankValue >= $playerValue && $bankValue <= 21) {
             $this->winner = 'Banken';
-        } else {
-            $this->winner = 'Spelaren';
         }
         $this->winnerMsg = "{$this->winner} vann";
     }

@@ -54,7 +54,6 @@ class GameController extends AbstractController
         $data = [
             'player' => $blackJack->getPlayer(),
             'bank' => $blackJack->getBank(),
-            'currentPlayer' => $blackJack->getCurrentPlayer(),
             'msg' => $blackJack->getMsg(),
             'suits' => $blackJack->getSuits()
         ];
