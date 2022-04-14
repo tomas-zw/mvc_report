@@ -7,7 +7,8 @@ class Player
     /** @var array<int, Card> */
     protected $hand;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->hand = [];
     }
 

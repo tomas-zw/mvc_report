@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-
 use App\Card\BlackJack;
 use App\Card\Player;
 use App\Card\Bank;
@@ -40,9 +39,7 @@ class GameController extends AbstractController
      */
     public function gameBlackJack(SessionInterface $session): Response
     {
-        // $startGame = new BlackJack(new Player(), new Bank());
-        // $session->set('blackJack', $startGame);
-
+        // $session->clear();
         if (!$session->has('blackJack')) {
             $startGame = new BlackJack(new Player(), new Bank());
             $session->set('blackJack', $startGame);
@@ -59,8 +56,7 @@ class GameController extends AbstractController
             'bank' => $blackJack->getBank(),
             'currentPlayer' => $blackJack->getCurrentPlayer(),
             'msg' => $blackJack->getMsg(),
-            'suits' => $blackJack->getSuits(),
-            'counter' => $blackJack->counter,
+            'suits' => $blackJack->getSuits()
         ];
 
         return $this->render('game/blackJack.html.twig', $data);
@@ -73,20 +69,21 @@ class GameController extends AbstractController
     *   methods={"POST"})
      */
     public function gameBlackJackPost(
-        SessionInterface $session, Request $request): Response
-    {
+        SessionInterface $session,
+        Request $request
+    ): Response {
         $blackJack = $session->get("blackJack");
         $newCard = $request->request->get('newCard');
         $noCard = $request->request->get('noCard');
         $newGame = $request->request->get('newGame');
 
-        if ($newGame){
+        if ($newGame) {
             $blackJack->setStartNewGame(true);
         }
-        if ($newCard){
+        if ($newCard) {
             $blackJack->setDrawNewCard(true);
         }
-        if ($noCard){
+        if ($noCard) {
             $blackJack->noMoreCards();
         }
 

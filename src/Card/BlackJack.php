@@ -12,6 +12,7 @@ class BlackJack
     private bool $drawNewCard;
     private string $playerMsg;
     private string $bankMsg;
+    private string $winnerMsg;
     private bool $startNewGame;
     /** @var array<string, string> */
     private $suits = [
@@ -21,8 +22,6 @@ class BlackJack
         'spades' => '♠',
     ];
 
-    public $counter = 0;
-    private string $errorMsg = '';
 
     public function __construct(Player $player, Bank $bank)
     {
@@ -30,6 +29,7 @@ class BlackJack
         $this->bank = $bank;
         $this->startNewGame = true;
         $this->winner = "";
+        $this->winnerMsg = "";
     }
 
     public function getPlayer(): Player
@@ -53,7 +53,7 @@ class BlackJack
         return [
             'player' => $this->playerMsg,
             'bank' => $this->bankMsg,
-            'error' => $this->errorMsg
+            'winner' => $this->winnerMsg
         ];
     }
 
@@ -65,7 +65,6 @@ class BlackJack
 
     public function setDrawNewCard(bool $trueOrFalse): void
     {
-        $this->errorMsg = 'setDrawNewCard';
         $this->drawNewCard = $trueOrFalse;
     }
 
@@ -86,11 +85,10 @@ class BlackJack
         $this->deckOfCards = $deck;
         $this->deckOfCards->shuffleDeck();
 
-        if ($this->winner || $this->startNewGame){
+        if ($this->winner || $this->startNewGame) {
             $this->newGame();
-        } elseif ($this->drawNewCard){
-            if ($this->currentPlayer == $this->player){
-                $this->counter += 1;
+        } elseif ($this->drawNewCard) {
+            if ($this->currentPlayer == $this->player) {
                 $this->givePlayerCard();
             } else {
                 $this->whoWon();
@@ -98,7 +96,7 @@ class BlackJack
         }
     }
 
-    private function whoWon():void
+    private function whoWon(): void
     {
         $bankValue = $this->bank->getHandValue();
         $playerValue = $this->player->getHandValue();
@@ -110,13 +108,12 @@ class BlackJack
         } else {
             $this->winner = 'Spelaren';
         }
-        $this->errorMsg = "{$this->winner} vann";
-
+        $this->winnerMsg = "{$this->winner} vann";
     }
 
     private function giveBankCards(): void
     {
-        while($this->bank->drawOrNot()) {
+        while ($this->bank->drawOrNot()) {
             $this->bank->addCardToHand($this->deckOfCards->drawCard());
         }
     }
@@ -126,16 +123,15 @@ class BlackJack
         $this->player->addCardToHand($this->deckOfCards->drawCard());
         $currentValue = $this->player->getHandValue();
         $this->playerMsg = "Du har {$currentValue} poäng.\n";
-        // $this->drawNewCard = false;
         if ($currentValue > 21) {
             $this->winner = 'Banken';
-            $this->errorMsg = "{$this->winner} vann";
+            $this->winnerMsg = "{$this->winner} vann";
         }
     }
 
     private function newGame(): void
     {
-        $this->errorMsg = 'newGame';
+        $this->winnerMsg = '';
         $this->winner = '';
         $this->startNewGame = false;
         $this->currentPlayer = $this->player;

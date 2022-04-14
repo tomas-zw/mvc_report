@@ -12,6 +12,7 @@
                 <p class='suits'>{{ suits[suit] }}</p>
             </div>
         {% endfor %}
+        <h2>{{msg.winner}}</h2>
     </div>
 
     <div class='card-grid'>
@@ -24,7 +25,6 @@
             </div>
         {% endfor %}
 
-        <p>{{counter}}</p>
     </div>
     <form method="post">
     <legend>Choose an action</legend>
@@ -34,7 +34,6 @@
         <button type="submit" name="newGame" value="1">New Game</button>
 
     </form>
-        <p>{{msg.error}}</p>
 
 {% endblock content %}
 
