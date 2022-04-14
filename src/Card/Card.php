@@ -4,8 +4,6 @@ namespace App\Card;
 
 class Card
 {
-    // private $value;
-    // private $color;
     private string $value;
     private string $color;
 

@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class='card-grid'>
-        <p>Spelare</p>
+        <p>{{ msg.player }}</p>
         {% for card in player.getHand() %}
            {% set suit = card.getColor() %}
             <div class='card {{ suit }}'>
@@ -12,11 +12,10 @@
                 <p class='suits'>{{ suits[suit] }}</p>
             </div>
         {% endfor %}
-        <p>{{ msg }}</p>
     </div>
 
     <div class='card-grid'>
-        <p>Bank</p>
+        <p>{{ msg.bank }}</p>
         {% for card in bank.getHand() %}
            {% set suit = card.getColor() %}
             <div class='card {{ suit }}'>
@@ -24,8 +23,17 @@
                 <p class='suits'>{{ suits[suit] }}</p>
             </div>
         {% endfor %}
-        <p>{{ msg }}</p>
+
+        <p>{{counter}}</p>
     </div>
+    <form method="post">
+    <legend>Choose an action</legend>
+
+        <button type="submit" name="newCard" value="1">New Card</button>
+        <button type="submit" name="newGame" value="1">New Game</button>
+
+    </form>
+        <p>{{msg.error}}</p>
 
 {% endblock content %}
 

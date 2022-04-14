@@ -20,11 +20,27 @@ class Player
 
     public function getHandValue(): int
     {
-        $handValue = 0;
+        $handValueInt = 0;
         foreach ($this->hand as $card) {
-            $handValue += (int) $card->getValue();
+            $handValue = $card->getValue();
+            switch ($handValue) {
+                case 'J':
+                    $handValueInt += 10;
+                    break;
+                case 'Q':
+                    $handValueInt += 10;
+                    break;
+                case 'K':
+                    $handValueInt += 10;
+                    break;
+                case 'A':
+                    $handValueInt += 11;
+                    break;
+                default:
+                    $handValueInt += (int) $handValue;
+            }
         }
-        return $handValue;
+        return $handValueInt;
     }
 
     public function resetHand(): void

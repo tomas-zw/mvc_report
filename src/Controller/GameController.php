@@ -15,15 +15,6 @@ use App\Card\Deck;
 
 class GameController extends AbstractController
 {
-    /** @var array<string, string> */
-    private $suits = [
-        'hearts' => '♥',
-        'diamonds' => '♦',
-        'clubs' => '♣',
-        'spades' => '♠',
-        'blank' => '✱',
-        'joker' => '🃏',
-    ];
     /**
      * @Route("/game", name="game_info")
      */
@@ -41,7 +32,11 @@ class GameController extends AbstractController
     }
 
     /**
-     * @Route("/game/game", name="game_game")
+    * @Route(
+    *   "/game/game",
+    *   name="game_game",
+    *   methods={"Get", "HEAD"}
+    * )
      */
     public function gameBlackJack(SessionInterface $session): Response
     {
@@ -51,15 +46,45 @@ class GameController extends AbstractController
         }
 
         $blackJack = $session->get('blackJack');
-        $blackJack->newGame(new Deck());
+
+        $blackJack->playGame(new Deck());
+
+        $session->set('blackJack', $blackJack);
+
         $data = [
             'player' => $blackJack->getPlayer(),
             'bank' => $blackJack->getBank(),
             'currentPlayer' => $blackJack->getCurrentPlayer(),
             'msg' => $blackJack->getMsg(),
-            'suits' => $this->suits
+            'suits' => $blackJack->getSuits(),
+            'counter' => $blackJack->counter,
         ];
 
         return $this->render('game/blackJack.html.twig', $data);
+    }
+
+    /**
+    * @Route(
+    *   "game/game",
+    *   name="game_game_post",
+    *   methods={"POST"})
+     */
+    public function gameBlackJackPost(
+        SessionInterface $session, Request $request): Response
+    {
+        $blackJack = $session->get("blackJack");
+        $newCard = $request->request->get('newCard');
+        $newGame = $request->request->get('newGame');
+
+        if ($newGame){
+            $blackJack->setStartNewGame(true);
+        }
+        if ($newCard){
+            $blackJack->setDrawNewCard(true);
+        }
+
+        $session->set('blackJack', $blackJack);
+
+        return $this->redirectToRoute('game_game');
     }
 }
