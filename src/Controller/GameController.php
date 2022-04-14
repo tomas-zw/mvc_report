@@ -40,6 +40,9 @@ class GameController extends AbstractController
      */
     public function gameBlackJack(SessionInterface $session): Response
     {
+        // $startGame = new BlackJack(new Player(), new Bank());
+        // $session->set('blackJack', $startGame);
+
         if (!$session->has('blackJack')) {
             $startGame = new BlackJack(new Player(), new Bank());
             $session->set('blackJack', $startGame);
@@ -74,6 +77,7 @@ class GameController extends AbstractController
     {
         $blackJack = $session->get("blackJack");
         $newCard = $request->request->get('newCard');
+        $noCard = $request->request->get('noCard');
         $newGame = $request->request->get('newGame');
 
         if ($newGame){
@@ -81,6 +85,9 @@ class GameController extends AbstractController
         }
         if ($newCard){
             $blackJack->setDrawNewCard(true);
+        }
+        if ($noCard){
+            $blackJack->noMoreCards();
         }
 
         $session->set('blackJack', $blackJack);

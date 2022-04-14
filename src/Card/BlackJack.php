@@ -8,6 +8,7 @@ class BlackJack
     private Player $player;
     private Bank $bank;
     private Player $currentPlayer;
+    private string $winner;
     private bool $drawNewCard;
     private string $playerMsg;
     private string $bankMsg;
@@ -28,6 +29,7 @@ class BlackJack
         $this->player = $player;
         $this->bank = $bank;
         $this->startNewGame = true;
+        $this->winner = "";
     }
 
     public function getPlayer(): Player
@@ -65,11 +67,6 @@ class BlackJack
     {
         $this->errorMsg = 'setDrawNewCard';
         $this->drawNewCard = $trueOrFalse;
-        // if (strcmp($trueOrFalse, 'true') == 0){
-        //     $this->drawNewCard = true;
-        // } else {
-        //     $this->drawNewCard = false;
-        // }
     }
 
     public function setStartNewGame(bool $trueOrFalse): void
@@ -77,33 +74,69 @@ class BlackJack
         $this->startNewGame = $trueOrFalse;
     }
 
+    public function noMoreCards(): void
+    {
+        $this->currentPlayer = $this->bank;
+        $this->drawNewCard = true;
+        $this->giveBankCards();
+    }
+
     public function playGame(Deck $deck): void
     {
         $this->deckOfCards = $deck;
         $this->deckOfCards->shuffleDeck();
 
-        if ($this->startNewGame) {
+        if ($this->winner || $this->startNewGame){
             $this->newGame();
-            $this->counter = 0;
-        }
-        if ($this->currentPlayer == $this->player){
-            if ($this->drawNewCard) {
+        } elseif ($this->drawNewCard){
+            if ($this->currentPlayer == $this->player){
                 $this->counter += 1;
                 $this->givePlayerCard();
+            } else {
+                $this->whoWon();
             }
+        }
+    }
+
+    private function whoWon():void
+    {
+        $bankValue = $this->bank->getHandValue();
+        $playerValue = $this->player->getHandValue();
+        $this->bankMsg = "Banken har {$bankValue} poäng.\n";
+        if ($bankValue > 21) {
+            $this->winner = 'Spelaren';
+        } elseif ($bankValue >= $playerValue) {
+            $this->winner = 'Banken';
+        } else {
+            $this->winner = 'Spelaren';
+        }
+        $this->errorMsg = "{$this->winner} vann";
+
+    }
+
+    private function giveBankCards(): void
+    {
+        while($this->bank->drawOrNot()) {
+            $this->bank->addCardToHand($this->deckOfCards->drawCard());
         }
     }
 
     private function givePlayerCard(): void
     {
         $this->player->addCardToHand($this->deckOfCards->drawCard());
-        $this->playerMsg = "Du har {$this->player->getHandValue()} poäng.\n";
-        $this->drawNewCard = false;
+        $currentValue = $this->player->getHandValue();
+        $this->playerMsg = "Du har {$currentValue} poäng.\n";
+        // $this->drawNewCard = false;
+        if ($currentValue > 21) {
+            $this->winner = 'Banken';
+            $this->errorMsg = "{$this->winner} vann";
+        }
     }
 
-    public function newGame(): void
+    private function newGame(): void
     {
         $this->errorMsg = 'newGame';
+        $this->winner = '';
         $this->startNewGame = false;
         $this->currentPlayer = $this->player;
 

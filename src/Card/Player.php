@@ -5,7 +5,11 @@ namespace App\Card;
 class Player
 {
     /** @var array<int, Card> */
-    protected $hand = [];
+    protected $hand;
+
+    public function __construct(){
+        $this->hand = [];
+    }
 
     public function addCardToHand(Card $card): void
     {
