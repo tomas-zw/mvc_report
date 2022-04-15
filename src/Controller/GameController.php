@@ -47,9 +47,9 @@ class GameController extends AbstractController
 
         $blackJack = $session->get('blackJack');
 
-        $blackJack->playGame(new Deck());
-
-        $session->set('blackJack', $blackJack);
+        // $blackJack->playGame(new Deck());
+        //
+        // $session->set('blackJack', $blackJack);
 
         $data = [
             'player' => $blackJack->getPlayer(),
@@ -85,6 +85,8 @@ class GameController extends AbstractController
         if ($noCard) {
             $blackJack->noMoreCards();
         }
+
+        $blackJack->playGame(new Deck());
 
         $session->set('blackJack', $blackJack);
 
