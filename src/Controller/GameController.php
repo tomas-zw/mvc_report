@@ -41,15 +41,12 @@ class GameController extends AbstractController
     {
         // $session->clear();
         if (!$session->has('blackJack')) {
-            $startGame = new BlackJack(new Player(), new Bank());
-            $session->set('blackJack', $startGame);
+            $blackJack = new BlackJack(new Player(), new Bank());
+            $blackJack->playGame(new Deck());
+            $session->set('blackJack', $blackJack);
         }
 
         $blackJack = $session->get('blackJack');
-
-        // $blackJack->playGame(new Deck());
-        //
-        // $session->set('blackJack', $blackJack);
 
         $data = [
             'player' => $blackJack->getPlayer(),

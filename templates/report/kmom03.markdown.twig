@@ -1,0 +1,77 @@
+# Kmom03
+***
+
+## Pseudokod
+
+Jag gjorde denna delen av uppgiften i kmom02 så skrivit redovisnigen om denna 
+delen finns där.
+
+## Min implementation
+
+Det har varit mycket prat om states, thin controllers, fat models och har för 
+mig att dumb templates nämnts nånstans. Och eftersom mitt flödesdiagram gjorde 
+det väldigt tydligt att logiken för en spelrunda kan hållas väldigt simpel, så 
+valde jag att helt fokusera på MVC och inte så mycket på själva spelet. 
+Mina klasser har jag försökt att hålla så specialiserade som möjligt. Kan väl 
+disskuteras om vissa saker verkligen ligger i 'rätt' klass, men känner ändå att 
+det är OK för bryter man ner allt ner i minsta detalj så slutar det med att man 
+drunknar i ett hav av klasser. Och då kan man istället ha en diskussion om det 
+verkligen behövdes specialiseras så hårt.
+
+Min plan och det jag försökt att implementera blev ett litet experiment där jag 
+har gjort ett tappert försök att styra flödet i spelet helt med hjälp av 
+vilket state BlackJack klassen är i. Jag blev nog mest nöjd med att jag lyckades 
+göra det som jag planerat, sen om det är rätt/fel/bra/dåligt har jag ingen 
+aning om.  
+Min plan och implementaion är då följande.
+
+### Model
+
+#### plan
+
+Att baserat på nuvarande state beräkna och ta fram ett nytt state som ska 
+motsvara den nya spelplanen.
+
+#### implementaion
+
+En public funktion som kollar sitt state och uppdaterar till ett nytt state
+efter behov.
+
+### Controller
+
+#### plan
+
+Så tunn som möjligt och helt utan logik.
+
+#### implementation
+
+3 funktioner för att be Modellen att uppdatera sitt state och en funktion som 
+uppdaterar hela Modellen.
+
+1. Dra nytt kort
+2. Stanna
+3. Nytt spel
+4. Uppdatera hela Model
+
+2 Routes
+
+1. 'GET': Hämtar nuvarande state och skickar till vyn.
+2. 'POST': Uppdatera state
+
+### View
+
+#### plan/implementaion
+
+Enbart visa det som skickas in och ingen logik.
+
+## Ramverket Symfony
+
+Mina krav är inte så höga och jag har inte haft några jobbiga felsökningar pga att 
+alla lager i Ramverket döljer det som händer under skalet (har haft väldiga 
+bekymmer i React-Native med det), hittills har alla felen varit mina egna så 
+Symfony känns helt OK.
+
+## TIL
+
+Vad 'imperative mood' är för något och att det gjorde det såååååååå mycket 
+enklare att göra en commit.
