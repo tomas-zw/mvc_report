@@ -2,19 +2,32 @@
 
 namespace App\Card;
 
+/**
+* A BlackJack game
+*/
 class BlackJack
 {
-    private Deck $deckOfCards;
-    private Player $player;
-    private Bank $bank;
-    private Player $currentPlayer;
-    private string $winner;
-    private bool $drawNewCard;
-    private string $playerMsg;
-    private string $bankMsg;
-    private string $winnerMsg;
-    private bool $startNewGame;
-    /** @var array<string, string> */
+    /** @var Deck $deckOfCards as the deck. */
+    private $deckOfCards;
+    /** @var Player $player as the player. */
+    private $player;
+    /** @var Bank $bank as the bank. */
+    private $bank;
+    /** @var Player $currentPlayer as the current player. */
+    private $currentPlayer;
+    /** @var string $winner as who won. */
+    private $winner;
+    /** @var bool $drawNewCard as if draw or not. */
+    private $drawNewCard;
+    /** @var string $playerMsg as a msg linked to the player. */
+    private $playerMsg;
+    /** @var string $bankMsg as a msg linked to the bank. */
+    private $bankMsg;
+    /** @var string $winnerMsg as a msg linked to the winner. */
+    private $winnerMsg;
+    /** @var bool $startNewGame as if start new game or not. */
+    private $startNewGame;
+    /** @var array<string, string> $suits as represantaion for suit of card. */
     private $suits = [
         'hearts' => '♥',
         'diamonds' => '♦',
@@ -22,7 +35,11 @@ class BlackJack
         'spades' => '♠',
     ];
 
-
+    /**
+    * Constructor to initialize a game of BlackJack with a bank an 1 player.
+    * @param Player $player as the player.
+    * @param Bank $bank as the bank.
+    */
     public function __construct(Player $player, Bank $bank)
     {
         $this->player = $player;
@@ -32,17 +49,28 @@ class BlackJack
         $this->winnerMsg = "";
     }
 
+    /**
+    * Get the player.
+    * @return Player
+    */
     public function getPlayer(): Player
     {
         return $this->player;
     }
 
+    /**
+    * Get the bank.
+    * @return Bank
+    */
     public function getBank(): Bank
     {
         return $this->bank;
     }
 
-    /** @return array<string, string> */
+    /**
+    * Get the all messages.
+    * @return array<string, string>
+    */
     public function getMsg()
     {
         return [
@@ -52,22 +80,39 @@ class BlackJack
         ];
     }
 
-    /** @return array<string, string> */
+    /**
+    * Get the suits.
+    * @return array<string, string>
+    */
     public function getSuits()
     {
         return $this->suits;
     }
 
+    /**
+    * Set var if to draw new card or not.
+    * @param bool $trueOrFalse as draw or not.
+    * @return void
+    */
     public function setDrawNewCard(bool $trueOrFalse): void
     {
         $this->drawNewCard = $trueOrFalse;
     }
 
+    /**
+    * Set var if to start new game or not.
+    * @param bool $trueOrFalse as new game or not.
+    * @return void
+    */
     public function setStartNewGame(bool $trueOrFalse): void
     {
         $this->startNewGame = $trueOrFalse;
     }
 
+    /**
+    * Set var if to change current playr to bank and give bank cards.
+    * @return void
+    */
     public function noMoreCards(): void
     {
         $this->currentPlayer = $this->bank;
@@ -75,6 +120,11 @@ class BlackJack
         $this->giveBankCards();
     }
 
+    /**
+    * Game loop. Checks variables to decide next action.
+    * @param Deck $deck as the deck.
+    * @return void
+    */
     public function playGame(Deck $deck): void
     {
         $this->deckOfCards = $deck;
@@ -94,6 +144,10 @@ class BlackJack
         }
     }
 
+    /**
+    * Checks who won the game.
+    * @return void
+    */
     private function whoWon(): void
     {
         $bankValue = $this->bank->getHandValue();
@@ -106,6 +160,10 @@ class BlackJack
         $this->winnerMsg = "{$this->winner} vann";
     }
 
+    /**
+    * Checks bank rules if to give bank new card or not.
+    * @return void
+    */
     private function giveBankCards(): void
     {
         while ($this->bank->drawOrNot()) {
@@ -113,6 +171,10 @@ class BlackJack
         }
     }
 
+    /**
+    * Checks player rules if to give player new card or not.
+    * @return void
+    */
     private function givePlayerCard(): void
     {
         $this->player->addCardToHand($this->deckOfCards->drawCard());
@@ -124,6 +186,10 @@ class BlackJack
         }
     }
 
+    /**
+    * Sets all variables to default state for a new game.
+    * @return void
+    */
     private function newGame(): void
     {
         $this->winnerMsg = '';
