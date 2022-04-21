@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1650538470">
-  <project timestamp="1650538470">
+<coverage generated="1650541600">
+  <project timestamp="1650541600">
     <file name="/home/bnbk/dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="3" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
@@ -88,9 +88,9 @@
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="7" coveredelements="7"/>
       </class>
-      <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="23" type="stmt" count="1"/>
-      <line num="24" type="stmt" count="1"/>
+      <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="23" type="stmt" count="5"/>
+      <line num="24" type="stmt" count="5"/>
       <line num="31" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="33" type="stmt" count="1"/>
       <line num="40" type="method" name="getColor" visibility="public" complexity="1" crap="1" count="1"/>
@@ -99,20 +99,20 @@
     </file>
     <file name="/home/bnbk/dbwebb-kurser/mvc/me/report/src/Card/Deck.php">
       <class name="App\Card\Deck" namespace="global">
-        <metrics complexity="6" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="11" coveredelements="0"/>
+        <metrics complexity="6" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="11" coveredelements="11"/>
       </class>
-      <line num="25" type="method" name="__construct" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="27" type="stmt" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="38" type="method" name="drawCard" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="40" type="stmt" count="0"/>
-      <line num="47" type="method" name="shuffleDeck" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <line num="58" type="method" name="addCard" visibility="protected" complexity="1" crap="2" count="0"/>
-      <line num="60" type="stmt" count="0"/>
-      <line num="61" type="stmt" count="0"/>
-      <metrics loc="64" ncloc="40" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="11" coveredelements="0"/>
+      <line num="25" type="method" name="__construct" visibility="public" complexity="3" crap="3" count="4"/>
+      <line num="27" type="stmt" count="4"/>
+      <line num="28" type="stmt" count="4"/>
+      <line num="29" type="stmt" count="4"/>
+      <line num="38" type="method" name="drawCard" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="40" type="stmt" count="1"/>
+      <line num="47" type="method" name="shuffleDeck" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="49" type="stmt" count="1"/>
+      <line num="58" type="method" name="addCard" visibility="protected" complexity="1" crap="1" count="4"/>
+      <line num="60" type="stmt" count="4"/>
+      <line num="61" type="stmt" count="4"/>
+      <metrics loc="64" ncloc="40" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="11" coveredelements="11"/>
     </file>
     <file name="/home/bnbk/dbwebb-kurser/mvc/me/report/src/Card/DeckWith2Jokers.php">
       <class name="App\Card\DeckWith2Jokers" namespace="global">
@@ -313,6 +313,6 @@
       </class>
       <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <metrics files="13" loc="866" ncloc="624" classes="12" methods="48" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="186" coveredstatements="6" elements="234" coveredelements="11"/>
+    <metrics files="13" loc="866" ncloc="624" classes="12" methods="48" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="186" coveredstatements="13" elements="234" coveredelements="22"/>
   </project>
 </coverage>
