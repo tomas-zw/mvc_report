@@ -138,7 +138,7 @@ class BlackJack
                 $this->givePlayerCard();
             // PHPmd doesn't like else
             } elseif ($this->currentPlayer == $this->bank) {
-            // } else {
+                // } else {
                 $this->whoWon();
             }
         }
