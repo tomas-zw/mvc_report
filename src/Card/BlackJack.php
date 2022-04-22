@@ -46,6 +46,8 @@ class BlackJack
         $this->bank = $bank;
         $this->startNewGame = true;
         $this->winner = "";
+        $this->playerMsg = "";
+        $this->bankMsg = "";
         $this->winnerMsg = "";
     }
 

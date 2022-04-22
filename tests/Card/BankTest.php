@@ -26,7 +26,7 @@ class BankTest extends TestCase
         $three = new Card('3', $suit);
         $bank->addCardToHand($three);
 
-        $this->assertTrue($bank->drawOrNot()); 
+        $this->assertTrue($bank->drawOrNot());
     }
 
     /**
@@ -46,6 +46,6 @@ class BankTest extends TestCase
         $three = new Card('7', $suit);
         $bank->addCardToHand($three);
 
-        $this->assertNotTrue($bank->drawOrNot()); 
+        $this->assertNotTrue($bank->drawOrNot());
     }
 }
