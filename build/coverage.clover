@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1650620227">
-  <project timestamp="1650620227">
+<coverage generated="1650624013">
+  <project timestamp="1650624013">
     <file name="/home/bnbk/dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
@@ -153,14 +153,14 @@
       <line num="50" type="stmt" count="6"/>
       <line num="51" type="stmt" count="6"/>
       <line num="52" type="stmt" count="6"/>
-      <line num="53" type="stmt" count="4"/>
-      <line num="54" type="stmt" count="4"/>
+      <line num="53" type="stmt" count="5"/>
+      <line num="54" type="stmt" count="5"/>
       <line num="55" type="stmt" count="6"/>
       <line num="56" type="stmt" count="1"/>
       <line num="57" type="stmt" count="1"/>
       <line num="58" type="stmt" count="6"/>
-      <line num="59" type="stmt" count="1"/>
-      <line num="60" type="stmt" count="1"/>
+      <line num="59" type="stmt" count="2"/>
+      <line num="60" type="stmt" count="2"/>
       <line num="61" type="stmt" count="6"/>
       <line num="62" type="stmt" count="1"/>
       <line num="63" type="stmt" count="1"/>
