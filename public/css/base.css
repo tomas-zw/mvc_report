@@ -96,6 +96,12 @@ html, body {
     width: 150px;
 }
 
+.book .full-img {
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 300px;
+}
+
 .book-container {
     display: grid;
     grid-template-columns: 1fr;

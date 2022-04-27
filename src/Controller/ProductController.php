@@ -42,6 +42,26 @@ class ProductController extends AbstractController
     }
 
     /**
+    * @Route(
+    *   "/product/show/{id}",
+    *   name="product_by_id"
+    *   )
+    */
+    public function showProductById(
+        BookRepository $productRepository,
+        int $id
+    ): Response
+    {
+        $book = $productRepository->find($id);
+
+        $data = [
+            'book' => $book,
+            'title' => 'book by id'
+        ];
+        return $this->render('product/oneBook.html.twig', $data);
+    }
+
+    /**
      * @Route("/product/create", name="create_product")
      */
     public function createProduct(
