@@ -100,4 +100,49 @@ class ProductController extends AbstractController
 
         return $this->render('product/createBook.html.twig', $data);
     }
+
+    /**
+    * @Route("/product/delete",
+    * name="product_delete_by_id_post",
+    * methods={"POST"}
+    * )
+     */
+    public function deleteProductByIdPost(
+        ManagerRegistry $doctrine,
+        Request $request
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        $bookId = $request->request->get('bookId');
+        $product = $entityManager->getRepository(Book::class)->find($bookId);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$bookId
+            );
+        }
+
+        $entityManager->remove($product);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('product_show_all');
+    }
+
+    /**
+    * @Route("/product/delete/{id}",
+    * name="product_delete_by_id"
+    * )
+     */
+    public function deleteProductById(
+        BookRepository $productRepository,
+        int $id
+    ): Response {
+        $book = $productRepository->find($id);
+
+        $data = [
+            'book' => $book,
+            'title' => 'book by id'
+        ];
+
+        return $this->render('product/deleteBook.html.twig', $data);
+    }
 }

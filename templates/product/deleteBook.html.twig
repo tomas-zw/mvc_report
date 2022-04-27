@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+<div class='book-grid'>
+
+    {{ include('sideBar.html.twig')}}
+
+    <div class='book-container'>
+
+            <div class='book'>
+                <img class='full-img' src="{{book.image}}" alt={{book.title}}>
+                <div>
+                    <h2>{{book.title}}</h2>
+                    <p>Author: {{book.author}}</p>
+                    <p>isbn: {{book.isbn}}</p>
+                    <form method="post" action="{{path('product_delete_by_id_post')}}">
+                        <fieldset>
+                        <legend>Delete Book from db</legend>
+                        <p>
+                            <input type="hidden" name="bookId" value="{{book.id}}">
+                            <input type="submit" name="Delete" value="Delete">
+                        </p>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+    </div>
+
+</div>
+{% endblock %}

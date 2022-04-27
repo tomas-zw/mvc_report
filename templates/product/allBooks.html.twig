@@ -18,6 +18,7 @@
                     </a>
                     <p>Author: {{book.author}}</p>
                     <p>isbn: {{book.isbn}}</p>
+                    <a href="{{ path('product_delete_by_id', {id: book.id}) }}">Delete</a>
                 </div>
             </div>
 
