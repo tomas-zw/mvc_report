@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+<div class='book-grid'>
+
+    {{ include('sideBar.html.twig')}}
+
+    <div class='book-container'>
+        {% for book in books%}
+
+            <div class='book'>
+                 <img class='thumbnail' src="{{book.image}}" alt={{book.title}}>
+                 <div>
+                    <a href='{{book.image}}'>
+                    <h2>{{book.title}}</h2>
+                    </a>
+                    <p>Author: {{book.author}}</p>
+                    <p>isbn: {{book.isbn}}</p>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

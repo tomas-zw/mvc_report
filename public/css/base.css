@@ -83,11 +83,32 @@ html, body {
     gap: 5px;
 }
 
+.book {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin: 1em auto;
+    gap: 10px;
+}
+
+.book .thumbnail {
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 150px;
+}
+
+.book-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
 .side-bar {
+    grid-row-start: 1;
+    grid-row-end: -1;
     border-right-style: solid;
     border-right-color: gray;
 }
 
-.side-bar ul li{
+.side-bar ul li {
     padding: 10px;
 }

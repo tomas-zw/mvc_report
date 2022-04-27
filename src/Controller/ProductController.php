@@ -30,9 +30,15 @@ class ProductController extends AbstractController
         BookRepository $productRepository
     ): Response
     {
-        $products = $productRepository->findAll();
+        $books = $productRepository->findAll();
+        # $jsonBooks = $this->json($products);
 
-        return $this->json($products);
+        # return $this->json($products);
+        $data = [
+            'books' => $books,
+            'title' => 'All Books'
+        ];
+        return $this->render('product/allBooks.html.twig', $data);
     }
 
     /**
