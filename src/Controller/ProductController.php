@@ -4,8 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-
 use App\Repository\BookRepository;
 use App\Entity\Book;
 use Doctrine\Persistence\ManagerRegistry;
@@ -28,8 +28,7 @@ class ProductController extends AbstractController
     */
     public function showAllProduct(
         BookRepository $productRepository
-    ): Response
-    {
+    ): Response {
         $books = $productRepository->findAll();
         # $jsonBooks = $this->json($products);
 
@@ -50,8 +49,7 @@ class ProductController extends AbstractController
     public function showProductById(
         BookRepository $productRepository,
         int $id
-    ): Response
-    {
+    ): Response {
         $book = $productRepository->find($id);
 
         $data = [
@@ -62,19 +60,21 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/product/create", name="create_product")
+    * @Route("/product/create",
+    * name="create_product_post",
+    *   methods={"POST"})
      */
-    public function createProduct(
-        ManagerRegistry $doctrine
-    ): Response
-    {
+    public function createProductPost(
+        ManagerRegistry $doctrine,
+        Request $request
+    ): Response {
         $entityManager = $doctrine->getManager();
 
         $product = new Book();
-        $product->setTitle('Dune');
-        $product->setIsbn('9780340960196');
-        $product->setAuthor('Frank Herbert');
-        $product->setImage('https://www.sfbok.se/sites/default/files/styles/large/sfbok/sfbokbilder/146/146243.jpg?bust=1435828540&itok=Y73Sylij');
+        $product->setTitle($request->request->get('title'));
+        $product->setIsbn($request->request->get('isbn'));
+        $product->setAuthor($request->request->get('author'));
+        $product->setImage($request->request->get('image'));
 
         // tell Doctrine you want to (eventually) save the Product
         // (no queries yet)
@@ -83,7 +83,21 @@ class ProductController extends AbstractController
         // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
 
-        return new Response('Saved new product with id '.$product->getId());
+        return $this->redirectToRoute('product_by_id', ['id' => $product->getId()]);
+    }
+
+    /**
+    * @Route("/product/create",
+    * name="create_product"
+    * )
+     */
+    public function createProduct(
+    ): Response
+    {
+        $data = [
+            'title' => 'Skapa ny bok'
+        ];
+
+        return $this->render('product/createBook.html.twig', $data);
     }
 }
-
