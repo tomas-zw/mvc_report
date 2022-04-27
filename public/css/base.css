@@ -76,3 +76,18 @@ html, body {
     font-size: 40px;
     font-weight: bold;
 }
+
+.book-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 5px;
+}
+
+.side-bar {
+    border-right-style: solid;
+    border-right-color: gray;
+}
+
+.side-bar ul li{
+    padding: 10px;
+}
