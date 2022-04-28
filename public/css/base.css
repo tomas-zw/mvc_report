@@ -122,3 +122,7 @@ html, body {
 .side-bar ul li {
     padding: 10px;
 }
+
+.grid-bottom {
+    align-self: end;
+}
