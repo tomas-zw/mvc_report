@@ -91,8 +91,8 @@ class ProductController extends AbstractController
     * name="create_product"
     * )
      */
-    public function createProduct(
-    ): Response {
+    public function createProduct(): Response
+    {
         $data = [
             'title' => 'Skapa ny bok'
         ];
@@ -116,7 +116,7 @@ class ProductController extends AbstractController
 
         if (!$product) {
             throw $this->createNotFoundException(
-                'No product found for id '.$bookId
+                'No product found for id ' . $bookId
             );
         }
 
@@ -161,7 +161,7 @@ class ProductController extends AbstractController
 
         if (!$product) {
             throw $this->createNotFoundException(
-                'No product found for id '.$bookId
+                'No product found for id ' . $bookId
             );
         }
 
