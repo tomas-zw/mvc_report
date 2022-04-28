@@ -169,13 +169,13 @@ class ProductController extends AbstractController
             $product->setTitle($request->request->get('title'));
         }
         if ($request->request->get('isbn')) {
-            $product->setTitle($request->request->get('isbn'));
+            $product->setIsbn($request->request->get('isbn'));
         }
         if ($request->request->get('author')) {
-            $product->setTitle($request->request->get('author'));
+            $product->setAuthor($request->request->get('author'));
         }
         if ($request->request->get('image')) {
-            $product->setTitle($request->request->get('image'));
+            $product->setImage($request->request->get('image'));
         }
 
         $entityManager->flush();

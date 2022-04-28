@@ -11,7 +11,7 @@
         {% for book in books%}
 
             <div class='book'>
-                <img class='thumbnail' src="{{book.image}}" alt={{book.title}}>
+                <img class='thumbnail' src="{{asset(book.image)}}" alt={{book.title}}>
                 <div>
                     <a href="{{ path('product_by_id', {id: book.id}) }}">
                     <h2>{{book.title}}</h2>
