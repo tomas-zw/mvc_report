@@ -1,4 +1,112 @@
 # Kmom06 Metrics
 ***
 
-## PHPUnit
+## Introduktion
+
+### Coverage
+
+Ett mått i % för hur stor del av kodbasen som täcks av åtminstånde ett test. 
+Det säger inget om kvaliten på testerna, bara att det blivit testat.
+
+### Complexity
+
+Är ett mått på komplexiteten i ett program/klass/funktion etc. Det representras 
+av en siffra som motsvarar antal vägar/beslut som kan tas. tex en funktion med 
+Cyclomatic complexity av 1 har alltid samma resultat, det finns bara en väg koden 
+kan gå.  
+Lägger man till en if sats så finns det nu 2 möjliga vägar att gå och komplexiteten 
+ökar, så Complexity är nu 2.
+
+### Cohesion
+
+Är ett mått på hur väl saker som hör ihop finns på samma plats.  
+High Cohesion fås med en klass som har ett tydligt ansvarsområde där alla metoder 
+och properties är kopplade till endast det området.  
+Low Cohesion är det omvända, en klass som har ansvar över flera områden.  
+High Cohesion är en indikation på en väldefinerad klass med ett tydligt ansvarsområde. 
+En Klass med Low Cohesion kan vara en indikation på att Klassen kan och kanske tom 
+bör brytas ner till mindre klasser med induvidiella ansvarsområden.
+
+### Coupling
+
+Är ett mått på hur stark kopplingen är mellan moduler.  
+Low Coupling är en indikation på att ändringar i en modul har en mindre risk att 
+krasha/tvinga fram ändringar i en annan modul. Och det omvända för High Coupling.
+
+## PHPMetrics
+
+På översikten så tittade jag på "Maintainability / complexity" grafen. Rött och 
+stora cirklar vill man helst undvika. Hade bara en röd (är en klass från en av 
+övningarna, och jag vet inte hur jag tar bort en fil från github, så brydde mig 
+inte om den). Den som stack ut var min BlackJack.php, en stor gul cirkel. 
+Den hade det högsta Complexity värdet med 10, och det lägsta Maintainability 
+värdet av 74,75. Så den klassen kikade jag lite närmare på.  
+- det var den största filen i projektet med 111 LOC/ 72 CLOC
+- AC Coupling 1 (högsta av klasserna var 5)
+- EC Coupling 3 (högsta av klasserna var 9)
+- LCOM var 1 (medel är 1.13)
+- Difficulty var högst med 12.46 (av resterande klasser som ej var en controller 
+var högsta värdet 4.83) 
+
+Jag har inte kunnat hitta vad denna "Difficulty" är för något men det var iaf 
+det som stack ut mest jämfört med mina andra klasser.
+
+## Scrutinizer
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/tomas-zw/mvc_report/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/tomas-zw/mvc_report/?branch=main)
+[![Code Coverage](https://scrutinizer-ci.com/g/tomas-zw/mvc_report/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/tomas-zw/mvc_report/?branch=main)
+[![Build Status](https://scrutinizer-ci.com/g/tomas-zw/mvc_report/badges/build.png?b=main)](https://scrutinizer-ci.com/g/tomas-zw/mvc_report/build-status/main)
+
+Här blev jag glatt överaskad när alla Class och Operation fick ett A på första 
+försöket.  
+Coverage var bara på 39% så kikade på den först. Vi har bara skrivit tester för 
+klasserna i Card/ och där har jag en Coverage på 96.85% så valde att släppa det 
+och leta efter annat att förbättra.  
+Hittade några CRAP score som var höga relativt till resten med värden mellan 12-42. 
+Dessa var alla Controllers och som jag förstår det så är CRAP värdet kopplat till 
+tester, och eftersom vi inte testat dom så släppte jag det med.  
+Även här hade BlackJack den högsta Complexity med 22, följt av 3 Controllers med 
+15, 12 respektive 12. Så relativt till mina andra klasser är BlackJack helt klart 
+den som hade förtjänat lite kärlek.  
+Hur detta ska göras har jag inte den blekaste aning om, annat än att skriva om 
+hela klassen. Men eftersom hela denna klass är ett resultat av ett litet experiment 
+jag testade i kmom03 så är det ingen slump att den är som den är.  
+BlackJack.php var jobbig att skriva, jobbig att förstå, är helt säker att jag 
+åldrades med 5 år av att försöka skriva vettiga tester för den, och jag vågar inte 
+ändra nånting i den för risken att det exploderar är stor. Så klassen är mer eller 
+mindre tvärtemot allt vi fått lära oss och det blev ganska så tydligt med Scrutinizer/PHPMetrics 
+(är väldigt förvånad att den fick ett A dock).
+
+## Förbättringar
+
+Detta var jättesvårt. Relativt till de andra klasserna så var det BlackJack som 
+stack ut. Men trots det så var även den ett A i Scrutinizer, så jag tolkar det 
+bara som att den är minst bra. Att göra större ändringar i BlackJack kommer dra med 
+sig ändringar i andra klasser/templates som även dom redan fått bra resultat, och 
+det var något jag helst ville undvika. Så jag letade efter något annan att "fixa" 
+för att få ett bättre mätvärde någonstans.
+
+#### 5 buggar i Issues i Scrutinizer
+
+- 1 major bug i src/Kernel.php. Vågar inte pilla där så denna släppte jag igenom
+- 4 minor buggar som alla kom från samma metod i Card/Deck.php.
+
+Har en metod som returnerar ett Card från Deck, men om Deck är tom returneras Null.
+Alla 4 buggarna var att jag inte kollar ifall det returneras Null. Detta är något 
+som ej skall kunna hända men kan inte skada att ha en check för det ändå.
+3 små ändringar i BlackJack.php och en i CardControllerTwig.php för att fixa. 
+Jag tror inte detta kommer påverka några mätvärden, men hoppas jag har fel iom 
+att 3/4 är i klassen som är minst bra.
+
+## Diskussion
+
+Vi är alla människor och glömmer/missar saker, så att ha dessa verktyg för att 
+visualisera kod ger en viss trygghet att även om man missat så är risken mindre 
+att det slinker igenom. Sen kan det finnas giltiga anledningar till att kod blir röd men 
+då ser man det iaf och kan göra en bedömning om utifrån det vad/om något behöver 
+fixas.  
+En annan stor fördel är att om man ser samma misstag om och om igen så försöker 
+man (förhoppnigsvis) att undvika att göra dom igen. Så på sätt och vis blir det
+nästan ett proaktiv sätt att förbättra sin kod iom att man undviker att upprepa 
+misstagen.
+

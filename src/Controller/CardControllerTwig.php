@@ -157,7 +157,9 @@ class CardControllerTwig extends AbstractController
             foreach ($game->getPlayers() as $player) {
                 for ($i = 0; $i < $cards; $i++) {
                     $card = $deck->drawCard();
-                    $player->addCardToHand($card);
+                    if ($card) {
+                        $player->addCardToHand($card);
+                    }
                 }
             }
         }
