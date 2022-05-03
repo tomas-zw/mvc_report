@@ -96,7 +96,23 @@ Alla 4 buggarna var att jag inte kollar ifall det returneras Null. Detta är nå
 som ej skall kunna hända men kan inte skada att ha en check för det ändå.
 3 små ändringar i BlackJack.php och en i CardControllerTwig.php för att fixa. 
 Jag tror inte detta kommer påverka några mätvärden, men hoppas jag har fel iom 
-att 3/4 är i klassen som är minst bra.
+att 3/4 är i klassen som är minst bra.  
+
+Resultatet var att 4 issues försvann. BlackJack Complexity steg från 22 till 26 
+och testcoverage på klassen sjönk med ca 10%.  
+I PHPMetrics steg Complexity från 10 till 14 och Maintainability sjönk till 72.69.  
+Resultatet var lite oväntat iom att det gav sämre värden.
+
+#### 2 saker till jag måste fixa men har ingen aning vad!
+
+Jag har suttit i vad som känns som timmar nu och letat och funderat på någon 
+vettig ändring jag kan göra och hittar inte nått. Lutar mer och mer åt att bara 
+ändra nått för sakens skull, och det känns lite sisådär. Jag är säker på att en 
+mer erfaren person lätt skulle hitta saker, men jag gör det inte :(  
+Så jag kommer nog nöja mig med 1 fix och vetskapen om att jag iaf lusläst rapporterna 
+och gjort vad jag kunnat.  
+Sen måste jag erkänna att det känns oförskämt bra att jag fick A på första 
+försöken (och jag låtsas inte om att det var en väldigt liten kodbas) :)
 
 ## Diskussion
 
