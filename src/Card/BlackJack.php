@@ -169,7 +169,11 @@ class BlackJack
     private function giveBankCards(): void
     {
         while ($this->bank->drawOrNot()) {
-            $this->bank->addCardToHand($this->deckOfCards->drawCard());
+            $card = $this->deckOfCards->drawCard();
+            if ($card) {
+                # $this->bank->addCardToHand($this->deckOfCards->drawCard());
+                $this->bank->addCardToHand($card);
+            }
         }
     }
 
@@ -179,7 +183,11 @@ class BlackJack
     */
     private function givePlayerCard(): void
     {
-        $this->player->addCardToHand($this->deckOfCards->drawCard());
+        $card = $this->deckOfCards->drawCard();
+        if ($card) {
+            # $this->player->addCardToHand($this->deckOfCards->drawCard());
+            $this->player->addCardToHand($card);
+        }
         $currentValue = $this->player->getHandValue();
         $this->playerMsg = "Du har {$currentValue} poäng.\n";
         if ($currentValue > 21) {
@@ -200,11 +208,21 @@ class BlackJack
         $this->currentPlayer = $this->player;
 
         $this->player->resetHand();
-        $this->player->addCardToHand($this->deckOfCards->drawCard());
+        $card = $this->deckOfCards->drawCard();
+        if ($card) {
+            # $this->player->addCardToHand($this->deckOfCards->drawCard());
+            $this->player->addCardToHand($card);
+        }
+        # $this->player->addCardToHand($this->deckOfCards->drawCard());
         $this->drawNewCard = false;
 
         $this->bank->resetHand();
-        $this->bank->addCardToHand($this->deckOfCards->drawCard());
+        $card = $this->deckOfCards->drawCard();
+        if ($card) {
+            # $this->bank->addCardToHand($this->deckOfCards->drawCard());
+            $this->bank->addCardToHand($card);
+        }
+        # $this->bank->addCardToHand($this->deckOfCards->drawCard());
 
         $this->playerMsg = "Du har {$this->player->getHandValue()} poäng.\n";
         $this->bankMsg = "Banken har {$this->bank->getHandValue()} poäng.\n";
