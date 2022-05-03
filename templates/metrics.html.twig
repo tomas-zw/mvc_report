@@ -1,0 +1,11 @@
+{# templates/metrics.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title%}metrics{% endblock %}
+
+{% block content %}
+
+    {{ include('report/metrics.markdown.twig')|markdown_to_html }}
+
+{% endblock content %}
