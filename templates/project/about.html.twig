@@ -4,13 +4,8 @@
 
 {% block content %}
 
-    {{ include('project/about.markdown.twig')|markdown_to_html }}
     <div>
-        <h1>About project</h1>
-        <h1>TODO link to phpdoc</h1>
-        <h1>TODO link to phpmetrics</h1>
-        <h1>TODO link to remote repo</h1>
-        <h1>TODO link to scrutinizer</h1>
+        {{ include('project/about.markdown.twig')|markdown_to_html }}
     </div>
 
 {% endblock %}

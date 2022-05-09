@@ -1,0 +1,11 @@
+{% extends 'project/project_base.html.twig' %}
+
+{% block title %}Snygg kod{% endblock %}
+
+{% block content %}
+
+    <div>
+        {{ include('project/cleancode.markdown.twig')|markdown_to_html }}
+    </div>
+
+{% endblock %}
