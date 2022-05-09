@@ -27,22 +27,23 @@ html, body {
     padding: 20px;
 }
 
-#navbar {
-    background-color: darkgray;
+.nav-container {
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    padding: 10px;
+}
+
+.navbar {
     font-size: 1.5rem;
 }
 
-#navbar a{
+.nav-container a{
     margin: 10px;
 }
 
-#docs-navbar {
-    text-align: center;
-    padding:20px;
-}
-
-#docs-navbar a{
-    margin: 10px;
+.docs-navbar {
+    margin-left: auto;
 }
 
 #content {
