@@ -42,19 +42,19 @@ class ProductController extends AbstractController
 
     /**
     * @Route(
-    *   "/product/show/{id}",
+    *   "/product/show/{bookId}",
     *   name="product_by_id"
     *   )
     */
     public function showProductById(
         BookRepository $productRepository,
-        int $id
+        int $bookId
     ): Response {
-        $book = $productRepository->find($id);
+        $book = $productRepository->find($bookId);
 
         $data = [
             'book' => $book,
-            'title' => 'book by id'
+            'title' => 'book by bookId'
         ];
         return $this->render('product/oneBook.html.twig', $data);
     }
@@ -127,15 +127,15 @@ class ProductController extends AbstractController
     }
 
     /**
-    * @Route("/product/delete/{id}",
+    * @Route("/product/delete/{bookId}",
     * name="product_delete_by_id"
     * )
      */
     public function deleteProductById(
         BookRepository $productRepository,
-        int $id
+        int $bookId
     ): Response {
-        $book = $productRepository->find($id);
+        $book = $productRepository->find($bookId);
 
         $data = [
             'book' => $book,
@@ -184,15 +184,15 @@ class ProductController extends AbstractController
     }
 
     /**
-    * @Route("/product/update/{id}",
+    * @Route("/product/update/{bookId}",
     * name="product_update"
     * )
      */
     public function updateProductById(
         BookRepository $productRepository,
-        int $id
+        int $bookId
     ): Response {
-        $book = $productRepository->find($id);
+        $book = $productRepository->find($bookId);
 
         $data = [
             'book' => $book,

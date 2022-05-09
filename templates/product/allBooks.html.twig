@@ -13,13 +13,13 @@
             <div class='book'>
                 <img class='thumbnail' src="{{asset(book.image)}}" alt={{book.title}}>
                 <div>
-                    <a href="{{ path('product_by_id', {id: book.id}) }}">
+                    <a href="{{ path('product_by_id', {bookId: book.id}) }}">
                     <h2>{{book.title}}</h2>
                     </a>
                     <p>Author: {{book.author}}</p>
                     <p>isbn: {{book.isbn}}</p>
-                    <a href="{{ path('product_delete_by_id', {id: book.id}) }}">Delete</a>
-                    <a href="{{ path('product_update', {id: book.id}) }}">Update</a>
+                    <a href="{{ path('product_delete_by_id', {bookId: book.id}) }}">Delete</a>
+                    <a href="{{ path('product_update', {bookId: book.id}) }}">Update</a>
                 </div>
             </div>
 
