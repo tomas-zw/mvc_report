@@ -4,6 +4,7 @@
 
 {% block content %}
 
+    {{ include('project/about.markdown.twig')|markdown_to_html }}
     <div>
         <h1>About project</h1>
         <h1>TODO link to phpdoc</h1>
