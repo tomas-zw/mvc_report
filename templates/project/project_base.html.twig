@@ -5,13 +5,13 @@
         <meta charset="UTF-8">
         <title>{% block title %}My Project{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" type="text/css" href="{{ asset('css/base.css') }}"/>
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/project.css') }}"/>
         {% endblock %}
     </head>
     <body>
 
-        {{ include('project/header.html.twig')}}
         {{ include('project/navbar.html.twig')}}
+        {{ include('project/header.html.twig')}}
 
         {% block body %}
             <div id="content">
