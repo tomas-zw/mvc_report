@@ -4,19 +4,27 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}My Project{% endblock %}</title>
+
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="{{ asset('css/project.css') }}"/>
         {% endblock %}
+
     </head>
     <body>
 
         {{ include('project/navbar.html.twig')}}
         {{ include('project/header.html.twig')}}
 
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
         {% block body %}
+
             <div id="content">
                 {% block content %} Project {% endblock %}
             </div>
+
         {% endblock %}
 
         {{ include('project/footer.html.twig')}}
