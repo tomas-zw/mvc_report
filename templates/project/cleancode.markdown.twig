@@ -1,7 +1,78 @@
 ## Snygg kod
+> “Any fool can write code that a computer can understand. Good programmers write code that humans can understand.”  – Martin Fowler.
 
-trietnaoiestnoient
+Det citatet sammanfattar "snygg kod" ganska så bra. Det säger inte så mycket om 
+hur koden ska se ut utan bara vad målet bör vara. 
 
-TODO
+### Vad är då "snygg kod"?  
+Först och främst så har det inget med font att göra. Det har inte så mycket med 
+det visuella att göra utan att koden följer en struktur och principer som följer 
+programmerings paradigmen/språket/ramverket etc man använder. Genom att följa 
+principerna så fås en struktur som underlättar för en utomstående (eller ditt 
+framtida jag) att navigera och förstå kodbasen. 
 
-astiarstie
+"Snygg kod" är lite missvisande, så jag kommer ta mig friheten att kalla det för 
+"Tydlig kod" från och med nu. Vad är då "Tydlig kod"?  
+"Tydlig kod" ska var lätt att förstå, tydlig, lätt att testa och gärna ha egenskapen 
+att den lätt kan ändras eller byggas på.  
+
+Så det är alltså flera olika byggstenar som när dom byggs ihop blir den heliga 
+graalen fylld med regnbågar och lakrits.  
+Några av byggstenarna är
+- Är koden tydlig? Kan du inte förklara din kod på ett tydligt sätt, så kommer sannolikt 
+inte personen som läser den heller kunna förstå.
+- Är koden lätt att testa? "Tydlig kod" är lätt(are) att testa så är det svårt att 
+skriva test så är sannolikt koden "osnygg".
+- Är koden konsekvent? 2 eller 4 spaces för en tab? camelCase eller snake_case? 
+"" eller ''? välj en och var konsekvent med valet.
+- KISS (keep it simple, stupid) och DRY (don't repeat yourself) är exempel på två 
+principer att följa som ger en tydligare och bättre kod.
+
+Ett av dom enklaste sakerna är nog att dokumentera sin kod.  
+Med tydliga kommentarer för funktioner och klasser (vet man inte hur man ska förklara
+med en tydlig kommentar så är det nog ett tecken på att klassen/funktionen är för 
+komplicerad, och kanske bör göras på ett annat vis) får man en dokumentation som 
+snabbt ger en blick över funktionalitet utan att läsa en endaste rad kod.  
+Tydliga och beskrivande variabel och funktions namn underlättar steget från att 
+förstå vad (kommentaren) något gör till hur (koden) det gör det. Det är gratis 
+dokumentation!  
+
+x2 kan vara vad som helst, men även utan kommentarer och anotations så är det 
+väldigt tydligt vad powerOf gör. 
+```
+function x2(a, b){
+    ......
+}
+
+function powerOf(base, exponent) {
+    ......
+}
+
+```
+
+
+
+### Vad är "snygg kod" för mig?
+
+Jag har inte jobbat i grupp ännu så hittills har det handlat om att försöka skriva 
+kod så att mitt framtida jag förstår den. Men trots det har mina försök att 
+skriva "snygg kod" har gett tydliga possitiva effekter.
+- Att (försöka) vara konsekvent med struktur har lett till att jag vet var saker 
+finns utan att behöva leta igenom hela projektet.
+- Att (försöka) anamma KISS och DRY har många gånger lett till att jag kan fokusera 
+på problemet istället för implementationen, och jag upplever också att det har lett 
+till att det blir lättare att göra tester.
+- Jag försöker att hålla något form av regler för att namnge variabler och funktioner 
+och det har lett till att den blir tydligare. Det blir "bättre" själv dokumentation 
+när reglerna följs och upprepas.
+
+Så för att försöka svara på frågan.  
+Genom att hela tiden försöka tänka på och följa dessa principerna så har jag bara 
+possitiva erfarenheter. Så för mig är att försöka skriva "snygg kod" mer än att 
+bara skriva tydlig kod. Det är mer att genom att göra den tydlig så får jag igen 
+så mycket mer och att koda blir både enklare och roligare. Jag ger lite, men får 
+tillbaka ofantligt mycket mer.
+
+
+> “Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.” — John Woods
+
