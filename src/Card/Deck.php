@@ -12,6 +12,16 @@ class Deck
     /** @var array<int, Card> */
     public $deck = [];
 
+    /** @var array<string, string> */
+    public $suits = [
+        'hearts' => '♥',
+        'diamonds' => '♦',
+        'clubs' => '♣',
+        'spades' => '♠',
+        'blank' => '✱',
+        'joker' => '🃏',
+    ];
+
     /** @var array<int, string> */
     private $colors = ['clubs', 'diamonds', 'hearts', 'spades'];
 

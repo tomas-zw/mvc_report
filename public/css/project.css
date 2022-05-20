@@ -75,3 +75,35 @@ blockquote {
     width: 80%;
 }
 
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    gap: 5px;
+}
+
+.card {
+    border: 1px solid black;
+    width: 60px;
+    height: 90px;
+    margin: 5px;
+}
+
+.card p {
+    padding: 5px;
+    margin: 0px;
+}
+
+.hearts, .diamonds {
+    color: red;
+}
+
+.spades, .clubs {
+    color: black;
+}
+
+.suits {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+

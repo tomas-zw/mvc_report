@@ -4,17 +4,19 @@
 
 {% block content %}
 
-    {#
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    #}
+    <h1>Mitt Projekt</h1>
 
-    <div>
-        <h1>Mitt Projekt</h1>
-        <h1>Mitt Projekt</h1>
+    <div class='card-grid'>
+
+    {% for card in deck.deck %}
+       {% set suit = card.getColor() %}
+            <div class='card {{ suit }}'>
+                <p>{{ card.getValue() }}</p>
+                <p class='suits'>{{ deck.suits[suit] }}</p>
+            </div>
+    {% endfor %}
+
     </div>
 
-        {{ render_chart(chart) }}
 
 {% endblock %}
