@@ -5,7 +5,10 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Card\TexasHoldem;
 use App\Card\Deck;
+use App\Card\Player;
+use App\Card\Bank;
 
 class ProjectController extends AbstractController
 {
@@ -16,7 +19,14 @@ class ProjectController extends AbstractController
     {
         $deck = new Deck();
         $deck->shuffleDeck();
+        $player = new Player();
+        $bank = new Bank();
+        $texasHoldem = new TexasHoldem($player, $bank, $deck);
+        $texasHoldem->startGame();
         $data = [
+            'player' => $texasHoldem->getPlayer()->getHand(),
+            'dealer' => $texasHoldem->getDealer()->getHand(),
+            'table' => $texasHoldem->getTable(),
             'deck' => $deck,
         ];
 

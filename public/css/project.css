@@ -75,13 +75,33 @@ blockquote {
     width: 80%;
 }
 
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
+.card-flex {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 60px;
+}
+
+.player {
+    justify-content: flex-start;
+    padding-left: 80px;
+}
+
+.table {
+    justify-content: center;
+    padding: 50px 10px;
+}
+
+.texas-table {
+    max-width: 900px;
+    background-color: green;
+    border: 1px solid black;
+    border-radius: 100px;
+    padding: 20px;
+    margin: auto;
 }
 
 .card {
+    background-color: white;
     border: 1px solid black;
     border-radius: 10px;
     width: 90px;
@@ -108,5 +128,10 @@ blockquote {
     text-align: center;
     font-size: 3rem;
     font-weight: bold;
+}
+
+.blank {
+    background-color: gray;
+    justify-content: center;
 }
 

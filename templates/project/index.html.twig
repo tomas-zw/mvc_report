@@ -4,19 +4,44 @@
 
 {% block content %}
 
-    <h1>Texas Hold'em</h1>
+    <div class='texas-table'>
 
-    <div class='card-grid'>
+    <div class='card-flex player'>
 
-    {% for card in deck.deck %}
-       {% set suit = card.getColor() %}
-            <div class='card {{ suit }}'>
-                <p>{{ card.getValue() }}</p>
-                <p class='suits'>{{ deck.suits[suit] }}</p>
-            </div>
-    {% endfor %}
+        {% for card in player %}
+           {% set suit = card.getColor() %}
+                <div class='card {{ suit }}'>
+                    <p>{{ card.getValue() }}</p>
+                    <p class='suits'>{{ deck.suits[suit] }}</p>
+                </div>
+        {% endfor %}
 
     </div>
+
+    <div class='card-flex table'>
+
+        {% for card in table %}
+           {% set suit = card.getColor() %}
+                <div class='card {{ suit }}'>
+                    <p>{{ card.getValue() }}</p>
+                    <p class='suits'>{{ deck.suits[suit] }}</p>
+                </div>
+        {% endfor %}
+
+    </div>
+
+    <div class='card-flex'>
+
+        {% for card in dealer %}
+            <div class='card suits blank'>
+                <p>{{ deck.suits['blank'] }}</p>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    </div>
+
 
 
 {% endblock %}
