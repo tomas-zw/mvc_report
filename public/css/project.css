@@ -77,14 +77,15 @@ blockquote {
 
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(13, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 5px;
 }
 
 .card {
     border: 1px solid black;
-    width: 60px;
-    height: 90px;
+    border-radius: 10px;
+    width: 90px;
+    height: 140px;
     margin: 5px;
 }
 
@@ -95,15 +96,17 @@ blockquote {
 
 .hearts, .diamonds {
     color: red;
+    font-size: 1.2rem;
 }
 
 .spades, .clubs {
     color: black;
+    font-size: 1.2rem;
 }
 
 .suits {
     text-align: center;
-    font-size: 40px;
+    font-size: 3rem;
     font-weight: bold;
 }
 

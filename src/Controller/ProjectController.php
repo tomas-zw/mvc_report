@@ -15,6 +15,7 @@ class ProjectController extends AbstractController
     public function projectIndex(): Response
     {
         $deck = new Deck();
+        $deck->shuffleDeck();
         $data = [
             'deck' => $deck,
         ];
