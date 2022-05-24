@@ -16,6 +16,16 @@
                 </div>
         {% endfor %}
 
+        <div class='select-flex'>
+            <form method="post">
+            {% if showButton %}
+                <button class="game-button" type="submit" name="newGame" value="1">Nytt spel</button>
+            {% else %}
+                <button class="game-button" type="submit" name="call" value="1">Call</button>
+                <button class="game-button" type="submit" name="fold" value="1">Fold</button>
+            {% endif %}
+        </div>
+
     </div>
 
     <div class='card-flex table'>

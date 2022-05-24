@@ -75,6 +75,15 @@ blockquote {
     width: 80%;
 }
 
+.game-button {
+    width: 100px;
+}
+
+.select-flex {
+    align-self: baseline;
+    margin: auto;
+}
+
 .card-flex {
     display: flex;
     justify-content: flex-end;
@@ -93,6 +102,7 @@ blockquote {
 
 .texas-table {
     max-width: 900px;
+    min-height: 560px;
     background-color: green;
     border: 1px solid black;
     border-radius: 100px;
