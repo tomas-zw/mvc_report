@@ -22,8 +22,8 @@ class ProjectController extends AbstractController
      */
     public function projectIndex(
         ManagerRegistry $doctrine,
-        SessionInterface $session): Response
-    {
+        SessionInterface $session
+    ): Response {
         //$session->clear();
         if (!$session->has('texasHoldem')) {
             $texasHoldem = new TexasHoldem(new Player(), new Bank());
