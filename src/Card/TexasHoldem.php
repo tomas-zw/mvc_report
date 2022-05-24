@@ -15,7 +15,7 @@ class TexasHoldem
     private $dealer;
     /** @var array<int, Card>  as cards on table. */
     private $table;
-    /** @var startNewGame as toggle. */
+    /** @var boolean $$startNewGame as toggle. */
     public $startNewGame;
 
     /**
@@ -110,5 +110,4 @@ class TexasHoldem
         $this->resetTable();
         $this->startNewGame = true;
     }
-
 }

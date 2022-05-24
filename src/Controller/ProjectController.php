@@ -7,11 +7,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-
 use App\Repository\TexasHoldemRepository;
 use App\Entity\TexasHoldem as TexasEntity;
 use Doctrine\Persistence\ManagerRegistry;
-
 use App\Card\TexasHoldem;
 use App\Card\Deck;
 use App\Card\Player;
@@ -59,15 +57,11 @@ class ProjectController extends AbstractController
         $player->setRounds(0);
         $player->setWinnings(100);
 
-        // tell Doctrine you want to (eventually) save the Product
-        // (no queries yet)
         $entityManager->persist($player);
 
-        // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
 
         return $this->redirectToRoute('project');
-
     }
 
     /**
@@ -76,8 +70,14 @@ class ProjectController extends AbstractController
     public function projectIndexPost(
         ManagerRegistry $doctrine,
         SessionInterface $session,
-        Request $request): Response
-    {
+        Request $request
+    ): Response {
+
+        $entityManager = $doctrine->getManager();
+        $player = $entityManager->getRepository(TexasEntity::class)->findAll();
+        $oldRounds = $player[0]->getRounds();
+        $oldWinnings = $player[0]->getWinnings();
+
 
         $texasHoldem = $session->get("texasHoldem");
         $newGame = $request->request->get('newGame');
@@ -85,19 +85,22 @@ class ProjectController extends AbstractController
         $fold = $request->request->get('fold');
 
         if ($newGame) {
+            $player[0]->setWinnings($oldWinnings - 10);
+            $player[0]->setRounds($oldRounds + 1);
             $texasHoldem->startGame(new Deck());
         }
         if ($call) {
+            $player[0]->setWinnings($oldWinnings - 20);
             $texasHoldem->call();
         }
         if ($fold) {
             $texasHoldem->fold();
         }
 
+        $entityManager->flush();
         $session->set('texasHoldem', $texasHoldem);
 
         return $this->redirectToRoute('project');
-
     }
 
     /**
