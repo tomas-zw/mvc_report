@@ -7,6 +7,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
+use App\Repository\TexasHoldemRepository;
+use App\Entity\TexasHoldem as TexasEntity;
+use Doctrine\Persistence\ManagerRegistry;
+
 use App\Card\TexasHoldem;
 use App\Card\Deck;
 use App\Card\Player;
@@ -39,14 +44,41 @@ class ProjectController extends AbstractController
 
         return $this->render('project/index.html.twig', $data);
     }
+    /**
+     * @Route("/proj/reset", name="project_reset", methods={"Get", "HEAD"})
+     */
+    public function projectReset(ManagerRegistry $doctrine): Response
+    {
+        $connection = $doctrine->getConnection();
+        $sql = "DELETE from texas_holdem";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+
+        $entityManager = $doctrine->getManager();
+        $player = new TexasEntity();
+        $player->setRounds(0);
+        $player->setWinnings(100);
+
+        // tell Doctrine you want to (eventually) save the Product
+        // (no queries yet)
+        $entityManager->persist($player);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+        return $this->redirectToRoute('project');
+
+    }
 
     /**
      * @Route("/proj", name="project_post", methods={"POST"})
      */
     public function projectIndexPost(
+        ManagerRegistry $doctrine,
         SessionInterface $session,
         Request $request): Response
     {
+
         $texasHoldem = $session->get("texasHoldem");
         $newGame = $request->request->get('newGame');
         $call = $request->request->get('call');
