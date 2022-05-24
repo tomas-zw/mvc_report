@@ -19,11 +19,17 @@
         <div class='select-flex'>
             <form method="post">
             {% if showButton %}
-                <button class="game-button" type="submit" name="newGame" value="1">Nytt spel</button>
+                <button class="game-button" type="submit" name="newGame" value="1">New Game: -10 kr</button>
             {% else %}
-                <button class="game-button" type="submit" name="call" value="1">Call</button>
+                <button class="game-button" type="submit" name="call" value="1">Call: -20 kr</button>
                 <button class="game-button" type="submit" name="fold" value="1">Fold</button>
             {% endif %}
+        </div>
+        <div class="score">
+            <h3>Total rounds</h3>
+            <p>{{rounds}}</p>
+            <h3>Winnings</h3>
+            <p>{{winnings}} kr</p>
         </div>
 
     </div>
@@ -43,9 +49,17 @@
     <div class='card-flex'>
 
         {% for card in dealer %}
-            <div class='card suits blank'>
-                <p>{{ deck.suits['blank'] }}</p>
-            </div>
+            {% if showButton %}
+                {% set suit = card.getColor() %}
+                <div class='card {{ suit }}'>
+                    <p>{{ card.getValue() }}</p>
+                    <p class='suits'>{{ deck.suits[suit] }}</p>
+                </div>
+            {% else %}
+                <div class='card suits blank'>
+                    <p>{{ deck.suits['blank'] }}</p>
+                </div>
+            {% endif %}
         {% endfor %}
 
     </div>

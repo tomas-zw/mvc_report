@@ -20,13 +20,20 @@ class ProjectController extends AbstractController
     /**
      * @Route("/proj", name="project", methods={"Get", "HEAD"})
      */
-    public function projectIndex(SessionInterface $session): Response
+    public function projectIndex(
+        ManagerRegistry $doctrine,
+        SessionInterface $session): Response
     {
         //$session->clear();
         if (!$session->has('texasHoldem')) {
             $texasHoldem = new TexasHoldem(new Player(), new Bank());
             $session->set('texasHoldem', $texasHoldem);
         }
+
+        $entityManager = $doctrine->getManager();
+        $player = $entityManager->getRepository(TexasEntity::class)->findAll();
+        $oldRounds = $player[0]->getRounds();
+        $oldWinnings = $player[0]->getWinnings();
 
         $texasHoldem = $session->get('texasHoldem');
         $deck = new Deck();
@@ -38,6 +45,8 @@ class ProjectController extends AbstractController
             'table' => $texasHoldem->getTable(),
             'deck' => $deck,
             'showButton' => $texasHoldem->startNewGame,
+            'rounds' => $oldRounds,
+            'winnings' => $oldWinnings,
         ];
 
         return $this->render('project/index.html.twig', $data);
