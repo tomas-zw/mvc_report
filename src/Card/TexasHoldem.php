@@ -15,7 +15,7 @@ class TexasHoldem
     private $dealer;
     /** @var array<int, Card>  as cards on table. */
     private $table;
-    /** @var boolean $$startNewGame as toggle. */
+    /** @var boolean $startNewGame as toggle. */
     public $startNewGame;
 
     /**

@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2022-05-03 18:58:45        , with PHPMetrics v2.8.1 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2022-05-24 19:40:34        , with PHPMetrics v2.8.1 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -300,6 +300,11 @@
         "relations": []
     },
     {
+        "name": "\\App\\Card\\TexasHoldem",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "\\App\\Repository\\BookRepository",
         "size": 3000,
         "relations": []
@@ -316,6 +321,20 @@
     },
     {
         "name": "\\App\\Entity\\Book",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\TexasHoldemRepository",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Entity\\TexasHoldem"
+        ]
+    },
+    {
+        "name": "\\App\\Entity\\TexasHoldem",
         "size": 3000,
         "relations": []
     },
@@ -375,12 +394,38 @@
         "relations": []
     },
     {
+        "name": "\\App\\Controller\\MetricsController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\Routing\\Annotation\\Route"
+        ]
+    },
+    {
         "name": "\\App\\Controller\\HomeControllerTwig",
         "size": 3000,
         "relations": [
             "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
             "\\Symfony\\Component\\HttpFoundation\\Response",
             "\\Symfony\\Component\\Routing\\Annotation\\Route"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\App\\Card\\Player",
+            "\\App\\Card\\Bank",
+            "\\App\\Card\\TexasHoldem",
+            "\\App\\Card\\Deck",
+            "\\Symfony\\Component\\Routing\\Annotation\\Route",
+            "\\App\\Entity\\TexasHoldem",
+            "\\Symfony\\Component\\HttpFoundation\\Request"
         ]
     },
     {
@@ -394,15 +439,6 @@
             "\\Doctrine\\Persistence\\ManagerRegistry",
             "\\Symfony\\Component\\HttpFoundation\\Request",
             "\\App\\Entity\\Book"
-        ]
-    },
-    {
-        "name": "\\App\\Controller\\metricsController",
-        "size": 3000,
-        "relations": [
-            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
-            "\\Symfony\\Component\\HttpFoundation\\Response",
-            "\\Symfony\\Component\\Routing\\Annotation\\Route"
         ]
     },
     {
