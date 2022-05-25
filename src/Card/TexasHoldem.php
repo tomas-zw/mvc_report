@@ -2,11 +2,15 @@
 
 namespace App\Card;
 
+use App\Card\TexasRules;
+
 /**
 * A Texas Hold'em game
 */
 class TexasHoldem
 {
+    /** @var TexasRules $rules as the rules. */
+    private $rules;
     /** @var Deck $deckOfCards as the deck. */
     private $deckOfCards;
     /** @var Player $player as the player. */
@@ -87,6 +91,7 @@ class TexasHoldem
             $this->dealer->addCardToHand($this->deckOfCards->drawCard());
             $this->table[] = $this->deckOfCards->drawCard();
         }
+        $this->whoWon();
     }
 
     /**
@@ -110,4 +115,47 @@ class TexasHoldem
         $this->resetTable();
         $this->startNewGame = true;
     }
+
+    /**
+    * Comparare hands and see who won.
+    * @return boolean as player won
+    */
+    public function whoWon()
+    {
+        $playerHand = array_merge($this->player->getHand(), $this->table);
+        $dealerHand = array_merge($this->dealer->getHand(), $this->table);
+        $this->rules = new TexasRules($playerHand, $dealerHand);
+    }
+
+    /**
+    * Get the value from the hand
+    * @return 
+    */
+    //public function whoWon(): boolean
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
