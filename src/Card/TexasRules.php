@@ -27,8 +27,8 @@ class TexasRules
         $this->dealerFlush = $this->isFlush($dealer);
         $this->playerValues = $this->getValues($player);
         $this->dealerValues = $this->getValues($dealer);
-        var_dump($this->playerFlush, $this->dealerFlush);
-        var_dump($this->playerValues, $this->dealerValues);
+        //var_dump($this->playerFlush, $this->dealerFlush);
+        //var_dump($this->playerValues, $this->dealerValues);
     }
 
     /**
@@ -55,7 +55,7 @@ class TexasRules
     /**
     * Get all values from a hand
     * @param array<int, Card> $hand as the hand.
-    * @return array<string, int>
+    * @return array<int, string>
     */
     private function getValues($hand)
     {
@@ -76,7 +76,7 @@ class TexasRules
     * Two pairs == 2 * 2 + 2
     * Pairs == 2 * 2
     * Nothing == 1 * 1
-    * @param array<int, int> $hand as sorted array.
+    * @param array<int, int> $hand as sorted array. ex (K K K A A == [3,2])
     * @param boolean $isFlush as true if hand is flush.
     * @return int for hand value
     */
@@ -90,11 +90,37 @@ class TexasRules
             $handWeight += 2;
         }
 
+        if ($isFlush) {
+            $handWeight = $this->handIsFlush($handWeight);
+        }
+
+        /**
         if ($isFlush && $handWeight < 11) {
             $handWeight = 11;
         }
 
         return $handWeight;
+        */
+    }
+    /**
+    * If hand is a flush chech if its the highest weight.
+    * @param int $weight as current weight
+    * @return int as the new weight
+    */
+    public function handIsFlush($weight) {
+        if ($weight < 11) {
+            return 11;
+        }
+        return $weight;
+    }
+
+    /**
+    * Compare weighted hands with equal value.
+    * @return boolean true if player won.
+    */
+    public function equalWeight() {
+
+        return true;
     }
 
     /**
@@ -117,7 +143,7 @@ class TexasRules
         if ($playerWeight >= $dealerWeight) {
             $playerWon = true;
         }
-        //var_dump($player, $playerOnlyCount, $dealerOnlyCount); exit;
+        //var_dump($player, $playerOnlyCount); exit;
         return $playerWon;
     }
 }
