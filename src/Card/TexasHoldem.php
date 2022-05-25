@@ -91,7 +91,6 @@ class TexasHoldem
             $this->dealer->addCardToHand($this->deckOfCards->drawCard());
             $this->table[] = $this->deckOfCards->drawCard();
         }
-        $this->whoWon();
     }
 
     /**
@@ -120,42 +119,17 @@ class TexasHoldem
     * Comparare hands and see who won.
     * @return boolean as player won
     */
-    public function whoWon()
+    public function isPlayerWinner()
     {
         $playerHand = array_merge($this->player->getHand(), $this->table);
         $dealerHand = array_merge($this->dealer->getHand(), $this->table);
         $this->rules = new TexasRules($playerHand, $dealerHand);
+        return $this->rules->isWinner();
     }
 
     /**
     * Get the value from the hand
-    * @return 
+    * @return
     */
     //public function whoWon(): boolean
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -94,15 +94,18 @@ class ProjectController extends AbstractController
         $fold = $request->request->get('fold');
 
         if ($newGame) {
-            $player[0]->setWinnings($oldWinnings - 10);
             $player[0]->setRounds($oldRounds + 1);
             $texasHoldem->startGame(new Deck());
         }
         if ($call) {
-            $player[0]->setWinnings($oldWinnings - 20);
+            $player[0]->setWinnings($oldWinnings - 30);
             $texasHoldem->call();
+            if ($texasHoldem->isPlayerWinner()) {
+                $player[0]->setWinnings($oldWinnings + 30);
+            }
         }
         if ($fold) {
+            $player[0]->setWinnings($oldWinnings - 10);
             $texasHoldem->fold();
         }
 
