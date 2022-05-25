@@ -48,6 +48,10 @@
 
     <div class='card-flex'>
 
+        <div class="score left">
+            <p>{{msg}}</p>
+        </div>
+
         {% for card in dealer %}
             {% if showButton %}
                 {% set suit = card.getColor() %}

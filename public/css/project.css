@@ -83,6 +83,12 @@ blockquote {
     text-align: center;
 }
 
+.left {
+    align-self: flex-start;
+    margin-right: auto;
+    margin-left: 60px;
+}
+
 .game-button {
     width: 100px;
 }

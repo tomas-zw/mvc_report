@@ -17,8 +17,10 @@ class TexasHoldem
     private $player;
     /** @var Bank $dealer as the dealer. */
     private $dealer;
-    /** @var array<int, Card>  as cards on table. */
+    /** @var array<int, Card> $table as cards on table. */
     private $table;
+    /** @var string $message as a message. */
+    private $message;
     /** @var boolean $startNewGame as toggle. */
     public $startNewGame;
 
@@ -32,6 +34,7 @@ class TexasHoldem
         $this->player = $player;
         $this->dealer = $bank;
         $this->startNewGame = true;
+        $this->message = "Welcome";
     }
 
     /**
@@ -41,6 +44,25 @@ class TexasHoldem
     public function getPlayer(): Player
     {
         return $this->player;
+    }
+
+    /**
+    * Get the message.
+    * @return string
+    */
+    public function getMessage(): string
+    {
+        return $this->message;
+    }
+
+    /**
+    * Set the message.
+    * @param string $msg
+    * @return void
+    */
+    public function setMessage($msg)
+    {
+        $this->message = $msg;
     }
 
     /**

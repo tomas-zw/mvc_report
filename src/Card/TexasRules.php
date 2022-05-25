@@ -77,8 +77,8 @@ class TexasRules
     * Pairs == 2 * 2
     * Nothing == 1 * 1
     * @param array<int, int> $hand as sorted array. ex (K K K A A == [3,2])
-    * @param boolean $isFlush as true if hand is flush.
-    * @return int for hand value
+    * @param boolean $isFlush as true if hand is a flush.
+    * @return int for hand weight
     */
     private function getWeight($hand, $isFlush)
     {
@@ -115,9 +115,9 @@ class TexasRules
     * arrays need to be sorted by value and key.
     * @param array<int, int> $player as < value, occurrences>
     * @param array<int, int> $dealer as < value, occurrences>
-    * @return boolean true if player won.
+    * @return boolean true if player has a better hand.
     */
-    public function equalWeight($player, $dealer)
+    private function equalWeight($player, $dealer)
     {
         $playerKeys = array_keys($player);
         $dealerKeys = array_keys($dealer);

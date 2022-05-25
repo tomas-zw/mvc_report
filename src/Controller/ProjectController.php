@@ -47,6 +47,7 @@ class ProjectController extends AbstractController
             'showButton' => $texasHoldem->startNewGame,
             'rounds' => $oldRounds,
             'winnings' => $oldWinnings,
+            'msg' => $texasHoldem->getMessage(),
         ];
 
         return $this->render('project/index.html.twig', $data);
@@ -100,13 +101,16 @@ class ProjectController extends AbstractController
         if ($call) {
             $player[0]->setWinnings($oldWinnings - 30);
             $texasHoldem->call();
+            $texasHoldem->setMessage("You lost 30 kr");
             if ($texasHoldem->isPlayerWinner()) {
                 $player[0]->setWinnings($oldWinnings + 30);
+                $texasHoldem->setMessage("You won 30 kr");
             }
         }
         if ($fold) {
             $player[0]->setWinnings($oldWinnings - 10);
             $texasHoldem->fold();
+            $texasHoldem->setMessage("You lost 10 kr");
         }
 
         $entityManager->flush();
