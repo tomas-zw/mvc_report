@@ -18,7 +18,7 @@ class TexasRulesTest extends TestCase
         $value = ['5', '5', '5', '4', '2', '8', '7'];
         $suit = ['clubs', 'clubs', 'clubs', 'spades', 'spades',  'spades', 'hearts'];
         $hand = array();
-        for ($i = 0; $i < count($value); $i++) {
+        for ($i = 0; $i < 7; $i++) {
             $hand[] = new Card($value[$i], $suit[$i]);
 
         }
@@ -38,7 +38,7 @@ class TexasRulesTest extends TestCase
         $suit = ['clubs', 'clubs', 'clubs', 'clubs', 'clubs',  'spades', 'hearts'];
         $handPlayer = array();
         $handDealer = array();
-        for ($i = 0; $i < count($valuePlayer); $i++) {
+        for ($i = 0; $i < 7; $i++) {
             $handPlayer[] = new Card($valuePlayer[$i], $suit[$i]);
             $handDealer[] = new Card($valuedealer[$i], $suit[$i]);
         }
@@ -62,7 +62,7 @@ class TexasRulesTest extends TestCase
         $suit = ['clubs', 'clubs', 'clubs', 'clubs', 'clubs',  'spades', 'hearts'];
         $handPlayer = array();
         $handDealer = array();
-        for ($i = 0; $i < count($valuePlayer); $i++) {
+        for ($i = 0; $i < 7; $i++) {
             $handPlayer[] = new Card($valuePlayer[$i], $suit[$i]);
             $handDealer[] = new Card($valuedealer[$i], $suit[$i]);
         }
@@ -85,7 +85,7 @@ class TexasRulesTest extends TestCase
         $flush = ['clubs', 'clubs', 'clubs', 'clubs', 'clubs',  'spades', 'hearts'];
         $handPlayer = array();
         $handDealer = array();
-        for ($i = 0; $i < count($valuePlayer); $i++) {
+        for ($i = 0; $i < 7; $i++) {
             $handPlayer[] = new Card($valuePlayer[$i], $flush[$i]);
             $handDealer[] = new Card($valuePlayer[$i], $suit[$i]);
         }
@@ -106,10 +106,9 @@ class TexasRulesTest extends TestCase
         $valuePlayer = ['5', '5', '5', '2', '3', '8', '7'];
         $valueDealer = ['5', '5', '6', '6', '2', '8', '7'];
         $suit = ['clubs', 'clubs', 'clubs', 'clubs', 'spades',  'spades', 'hearts'];
-        $flush = ['clubs', 'clubs', 'clubs', 'clubs', 'clubs',  'spades', 'hearts'];
         $handPlayer = array();
         $handDealer = array();
-        for ($i = 0; $i < count($valuePlayer); $i++) {
+        for ($i = 0; $i < 7; $i++) {
             $handPlayer[] = new Card($valuePlayer[$i], $suit[$i]);
             $handDealer[] = new Card($valueDealer[$i], $suit[$i]);
         }
@@ -130,10 +129,9 @@ class TexasRulesTest extends TestCase
         $valuePlayer = ['5', '5', '6', '6', '3', '8', '7'];
         $valueDealer = ['5', '5', '4', '9', '2', '8', '7'];
         $suit = ['clubs', 'clubs', 'clubs', 'clubs', 'spades',  'spades', 'hearts'];
-        $flush = ['clubs', 'clubs', 'clubs', 'clubs', 'clubs',  'spades', 'hearts'];
         $handPlayer = array();
         $handDealer = array();
-        for ($i = 0; $i < count($valuePlayer); $i++) {
+        for ($i = 0; $i < 7; $i++) {
             $handPlayer[] = new Card($valuePlayer[$i], $suit[$i]);
             $handDealer[] = new Card($valueDealer[$i], $suit[$i]);
         }
@@ -154,10 +152,9 @@ class TexasRulesTest extends TestCase
         $valuePlayer = ['5', '5', '6', '10', '3', '8', 'A'];
         $valueDealer = ['5', '5', '6', '10', '3', '8', '7'];
         $suit = ['clubs', 'clubs', 'clubs', 'clubs', 'spades',  'spades', 'hearts'];
-        $flush = ['clubs', 'clubs', 'clubs', 'clubs', 'clubs',  'spades', 'hearts'];
         $handPlayer = array();
         $handDealer = array();
-        for ($i = 0; $i < count($valuePlayer); $i++) {
+        for ($i = 0; $i < 7; $i++) {
             $handPlayer[] = new Card($valuePlayer[$i], $suit[$i]);
             $handDealer[] = new Card($valueDealer[$i], $suit[$i]);
         }
@@ -176,12 +173,11 @@ class TexasRulesTest extends TestCase
     public function testEqualFlush()
     {
         $valuePlayer = ['5', '5', '6', '10', '3', '8', 'A'];
-        $valueDealer = ['5', '5', '6', '10', '3', '8', '7'];
         $suit = ['clubs', 'clubs', 'clubs', 'clubs', 'spades',  'spades', 'hearts'];
         $flush = ['clubs', 'clubs', 'clubs', 'clubs', 'clubs',  'spades', 'hearts'];
         $handPlayer = array();
         $handDealer = array();
-        for ($i = 0; $i < count($valuePlayer); $i++) {
+        for ($i = 0; $i < 7; $i++) {
             $handPlayer[] = new Card($valuePlayer[$i], $flush[$i]);
             $handDealer[] = new Card($valuePlayer[$i], $suit[$i]);
         }
