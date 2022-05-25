@@ -11,9 +11,9 @@ class TexasRules
     private $playerFlush;
     /** @var boolean $dealerFlush as flush or not. */
     private $dealerFlush;
-    /** @var array<int, string> $playerValues as players hand */
+    /** @var array<int, int> $playerValues as players hand */
     private $playerValues;
-    /** @var array<int, string> $dealerValues as the dealers hand. */
+    /** @var array<int, int> $dealerValues as the dealers hand. */
     private $dealerValues;
 
     /**
@@ -55,13 +55,13 @@ class TexasRules
     /**
     * Get all values from a hand
     * @param array<int, Card> $hand as the hand.
-    * @return array<int, string>
+    * @return array<int, int>
     */
     private function getValues($hand)
     {
         $handValue = array();
         foreach ($hand as $card) {
-            $handValue[] = $card->getValue();
+            $handValue[] = $card->getValueAsInt();
         }
         return $handValue;
     }
@@ -94,20 +94,16 @@ class TexasRules
             $handWeight = $this->handIsFlush($handWeight);
         }
 
-        /**
-        if ($isFlush && $handWeight < 11) {
-            $handWeight = 11;
-        }
-
         return $handWeight;
-        */
     }
+
     /**
-    * If hand is a flush chech if its the highest weight.
+    * check if flush is the highest weight.
     * @param int $weight as current weight
     * @return int as the new weight
     */
-    public function handIsFlush($weight) {
+    private function handIsFlush($weight)
+    {
         if ($weight < 11) {
             return 11;
         }
@@ -115,11 +111,29 @@ class TexasRules
     }
 
     /**
-    * Compare weighted hands with equal value.
+    * Compare hands with equal weighted value.
+    * arrays need to be sorted by value and key.
+    * @param array<int, int> $player as < value, occurrences>
+    * @param array<int, int> $dealer as < value, occurrences>
     * @return boolean true if player won.
     */
-    public function equalWeight() {
+    public function equalWeight($player, $dealer)
+    {
+        $playerKeys = array_keys($player);
+        $dealerKeys = array_keys($dealer);
+        $lowestIndex = count($playerKeys);
 
+        if (count($dealerKeys) < $lowestIndex) {
+            $lowestIndex = count($dealerKeys);
+        }
+
+        for ($i = 0; $i < $lowestIndex; $i++) {
+            if ($playerKeys[$i] == $dealerKeys[$i]) {
+                continue;
+            }
+            return ($playerKeys[$i] > $dealerKeys[$i]);
+        }
+        // if empty array
         return true;
     }
 
@@ -131,6 +145,8 @@ class TexasRules
     {
         $player = array_count_values($this->playerValues);
         $dealer = array_count_values($this->dealerValues);
+        krsort($player);
+        krsort($dealer);
         arsort($player);
         arsort($dealer);
         $playerOnlyCount = array_values($player);
@@ -140,10 +156,12 @@ class TexasRules
         $playerWeight = $this->getWeight($playerOnlyCount, $this->playerFlush);
         $dealerWeight = $this->getWeight($dealerOnlyCount, $this->dealerFlush);
 
-        if ($playerWeight >= $dealerWeight) {
+        if ($playerWeight > $dealerWeight) {
             $playerWon = true;
+        } elseif ($playerWeight == $dealerWeight) {
+            $playerWon = $this->equalWeight($player, $dealer);
         }
-        //var_dump($player, $playerOnlyCount); exit;
+        //var_dump($player, $playerOnlyCount, $playerWeight, $dealerWeight); exit;
         return $playerWon;
     }
 }

@@ -34,6 +34,33 @@ class Card
     }
 
     /**
+    * Get the value of the card.
+    * @return int as the value of the card.
+    */
+    public function getValueAsInt(): int
+    {
+        $handValueInt = 0;
+        $handValue = $this->value;
+        switch ($handValue) {
+            case 'J':
+                $handValueInt = 11;
+                break;
+            case 'Q':
+                $handValueInt = 12;
+                break;
+            case 'K':
+                $handValueInt = 13;
+                break;
+            case 'A':
+                $handValueInt = 14;
+                break;
+            default:
+                $handValueInt = (int) $handValue;
+        }
+        return $handValueInt;
+    }
+
+    /**
     * Get the suit of the card.
     * @return string as the suit of the card.
     */
