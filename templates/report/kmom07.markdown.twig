@@ -3,6 +3,58 @@
 
 ## Krav 1-3
 
+### Projektfokus
+Jag har valt att göra en Casino sida där man kan spela Texas Hold'em.  
+Dealern får två gömda kort, spelaren får två kort och tre 
+kort visas på bordet. Spelaren får välja att fortsätta och då visas de två 
+sista korten och den högsta handen vinner. Väljer spelaren att lägga sig så 
+förlorar spelaren insattsen och en ny runda börjar.
+
+### ORM
+
+Jag sparar antal rundor spelaren har spelat samt den totala vinsten.  
+En /proj/reset med länk i navbar där med SQL jag gör DELETE på hela tabellen 
+och sen skapar en helt ny entity som sparas.
+
+### Utseende och användbarhet
+
+Alla sidor under /proj har en helt ny stylesheet. 
+
+### Kodstil
+
+Blank och fin rapport så inga konstigheter här.
+
+### Linters
+
+Jag har några varningar både från phpmd och phpstan. Samtliga av dessa gäller 
+antingen /Entity eller /Repository och vill helst inte in och ändra i koden där 
+så dom har fått vara kvar.
+
+### Enhetstestning och Kodtäckning
+
+TexasHoldem.php och TexasRules.php är dom nya klasserna för projektet och dom 
+har 100% respektive 96% kodtäckning.  
+Card/ har alla klasser jag använder i /report och den mappen har en kodtäckning 
+av 97%.
+
+### Dokumentation
+
+All kod har docblocks och länk finns i /proj/about.
+
+### Metrics
+
+Länk till docs/metrics finns i /proj/about.
+
+### Git repo
+
+Repo med uppdaterad README.md finns på Github.  
+Länk finns i /proj/about.
+
+### Scrutinizer
+
+Länk finns även i /proj/about.  
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/tomas-zw/mvc_report/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/tomas-zw/mvc_report/?branch=main)
+
 ## Krav 4: Snygg kod
 
 Jag valde att skriva en artikel om detta.
@@ -13,22 +65,30 @@ Min första tanke när jag såg projektet var " herregud, here we go again ". En
 vägg av text och så många små punkter att det var svårt att få en överblick 
 av vad som ens skulle göras. Att hela tiden behöva scrolla igenom texten och 
 dubbelkolla allt för att se så man inte missat någon punkt eller anvisning var 
-minst sagt frustrerande.  
-Jag har jätte svårt att ge ett bra svar på om detta var ett rimligt projekt eller 
-ej. Punkterna i sig var inte stora eller svåra men det är helt enkelt antalet som 
-helt tar över projektet. Det blev en övning i att bocka av krav istället för att 
-göra en webbsida.  
+något jag fick göra genom hela projektet.  
+Med det sagt så tycker jag att när första chocken lagt sig och bilden av vad som 
+ska göras klarnar, så är detta ett rimligt projekt. Alla delar som gjorts i 
+kursen finns med och att själv välja projektide och omfattning är något som jag 
+tycker är bra.  
 
+Det svåraste med projektet för mig var att göra logiken för att kolla vilken 
+hand som vann. Eftersom ett av mina mål var att behålla min 10'a på Scrutinizer 
+så var en spaghetti med if/else till höger och vänster utestlutet.  
+Jag löste det med att ge alla händer en vikt och sen bara jämföra vikten. Tyngst 
+har bäst hand, och om dom är lika så behövde jag bara jämföra ett kort mot ett annat,
+inte hand mot hand.
 
 ## Tankar om kursen
 
 Jag är inte helt säker på vad det är tänkt att vi ska lära oss i denna kursen 
 måste jag erkänna. Det är mycket repetition från andra kurser och det enda nya 
-är ORM och automatiserade tester.  
-På Canvas heter den OOPHP, på dbwebb är det MVC och jag får en olustig känsla 
-av att saker slängts in i kursen bara för att fylla ut den men jag hoppas att jag 
-har fel. Jag kan inte se någon röd tråd igenom kursen och personligen har detta 
-varit ett tråkigt avslut på ett annars bra första år på BTH.  
+är ORM och automatiserade tester. På Canvas heter den OOPHP, på dbwebb är det 
+MVC och jag får en olustig känsla av att vissa saker är med som utfyllnad.  
 
-Eftersom jag inte ens hade kunnat förklara för en vän vad kursen handlar om, så 
-hade jag inte heller tyvärr kunnat rekomendera den. Så 3/10 får den i betyg av mig.
+Det var väl inget som stack ut som extra bra, inte heller som extra dåligt. Men
+eftersom jag inte riktigt förstår syftet med kursen så känner jag nog att en 
+förbättring hade varit att hitta någon röd tråd genom kursen, istället för att 
+ha så många små delar.
+
+MVC kursen var inte dålig, men inte heller bra så en 5/10 känns som ett rimligt 
+betyg från mig.

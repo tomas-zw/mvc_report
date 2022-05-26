@@ -22,6 +22,20 @@ Källkoden
 
 ## Projektets kodkvalitet
 
-TODO
+Jag har genomgående använt docbloc samt phpstan/phpmd/phpcpd och phpcs för att 
+löpande hela tiden ha koll så att inget spårade ur. Jag har några varningar kvar 
+i både phpmd och phpstan men alla dom kommer från /Entity eller /Repository så 
+dom är kvar. Jag har valt att inte disebla dom varningarna för känner lite att 
+syftet med kod analys försvinner lite om man disablar varningar lite här och var.
 
-astiarstie
+Scrutinizer har en bra "issues" flik så den har jag använt för att rätta till 
+lite små saker som inte kom upp med linters. Issues fliken är tydlig så det som 
+kom upp där var mindre saker som var lätta att fixa till.
+
+Jag hade en 10'a innan och hade ett litet mål att det skulle vara en 10'a även 
+efter projektet. Detta lyckades jag med och ökade även kodtäckningen med 7%.  
+Kodtäckningen för de 2 nya klasserna för projektet har 100% respektive 96% 
+kodtäckning. (TexasHoldem.php samt TexasRules.php)
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/tomas-zw/mvc_report/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/tomas-zw/mvc_report/?branch=main)
+[![Code Coverage](https://scrutinizer-ci.com/g/tomas-zw/mvc_report/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/tomas-zw/mvc_report/?branch=main)
