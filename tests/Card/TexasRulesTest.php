@@ -103,7 +103,6 @@ class TexasRulesTest extends TestCase
      */
     public function testStraight()
     {
-        //$valuePlayer = ['4', '5', '10', '11', '12', '13', '14'];
         $valuePlayer = ['10', '11', '12', '13', '14', '5', '5'];
         $valueDealer = ['2', '3', '4', '7', '7', '7', '10'];
         $suit = ['clubs', 'clubs', 'clubs', 'clubs', 'spades',  'spades', 'hearts'];

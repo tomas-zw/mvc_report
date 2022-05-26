@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1653575647">
-  <project timestamp="1653575647">
+<coverage generated="1653576776">
+  <project timestamp="1653576776">
     <file name="/home/bnbk/dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
@@ -108,17 +108,17 @@
       <line num="43" type="stmt" count="12"/>
       <line num="44" type="stmt" count="12"/>
       <line num="45" type="stmt" count="12"/>
-      <line num="46" type="stmt" count="2"/>
-      <line num="47" type="stmt" count="2"/>
+      <line num="46" type="stmt" count="1"/>
+      <line num="47" type="stmt" count="1"/>
       <line num="48" type="stmt" count="12"/>
-      <line num="49" type="stmt" count="1"/>
-      <line num="50" type="stmt" count="1"/>
+      <line num="49" type="stmt" count="2"/>
+      <line num="50" type="stmt" count="2"/>
       <line num="51" type="stmt" count="12"/>
-      <line num="52" type="stmt" count="2"/>
-      <line num="53" type="stmt" count="2"/>
+      <line num="52" type="stmt" count="1"/>
+      <line num="53" type="stmt" count="1"/>
       <line num="54" type="stmt" count="12"/>
-      <line num="55" type="stmt" count="3"/>
-      <line num="56" type="stmt" count="3"/>
+      <line num="55" type="stmt" count="4"/>
+      <line num="56" type="stmt" count="4"/>
       <line num="58" type="stmt" count="11"/>
       <line num="60" type="stmt" count="12"/>
       <line num="67" type="method" name="getColor" visibility="public" complexity="1" crap="1" count="12"/>
@@ -179,17 +179,17 @@
       <line num="50" type="stmt" count="6"/>
       <line num="51" type="stmt" count="6"/>
       <line num="52" type="stmt" count="6"/>
-      <line num="53" type="stmt" count="6"/>
-      <line num="54" type="stmt" count="6"/>
+      <line num="53" type="stmt" count="5"/>
+      <line num="54" type="stmt" count="5"/>
       <line num="55" type="stmt" count="6"/>
       <line num="56" type="stmt" count="2"/>
       <line num="57" type="stmt" count="2"/>
       <line num="58" type="stmt" count="6"/>
-      <line num="59" type="stmt" count="2"/>
-      <line num="60" type="stmt" count="2"/>
+      <line num="59" type="stmt" count="1"/>
+      <line num="60" type="stmt" count="1"/>
       <line num="61" type="stmt" count="6"/>
-      <line num="62" type="stmt" count="1"/>
-      <line num="63" type="stmt" count="1"/>
+      <line num="62" type="stmt" count="3"/>
+      <line num="63" type="stmt" count="3"/>
       <line num="65" type="stmt" count="5"/>
       <line num="68" type="stmt" count="6"/>
       <line num="75" type="method" name="resetHand" visibility="public" complexity="1" crap="1" count="8"/>
@@ -284,47 +284,47 @@
       <line num="124" type="method" name="handIsStraight" visibility="private" complexity="5" crap="5" count="9"/>
       <line num="126" type="stmt" count="9"/>
       <line num="127" type="stmt" count="2"/>
+      <line num="130" type="stmt" count="9"/>
       <line num="131" type="stmt" count="9"/>
       <line num="132" type="stmt" count="9"/>
       <line num="133" type="stmt" count="9"/>
       <line num="134" type="stmt" count="9"/>
-      <line num="135" type="stmt" count="9"/>
-      <line num="138" type="stmt" count="9"/>
-      <line num="139" type="stmt" count="9"/>
-      <line num="140" type="stmt" count="1"/>
-      <line num="142" type="stmt" count="9"/>
+      <line num="136" type="stmt" count="9"/>
+      <line num="137" type="stmt" count="9"/>
+      <line num="138" type="stmt" count="1"/>
+      <line num="140" type="stmt" count="9"/>
+      <line num="141" type="stmt" count="6"/>
+      <line num="142" type="stmt" count="6"/>
       <line num="143" type="stmt" count="6"/>
-      <line num="144" type="stmt" count="6"/>
-      <line num="145" type="stmt" count="6"/>
-      <line num="147" type="stmt" count="9"/>
-      <line num="150" type="stmt" count="9"/>
-      <line num="160" type="method" name="equalWeight" visibility="private" complexity="4" crap="4.13" count="2"/>
-      <line num="162" type="stmt" count="2"/>
-      <line num="163" type="stmt" count="2"/>
-      <line num="164" type="stmt" count="2"/>
-      <line num="166" type="stmt" count="2"/>
-      <line num="167" type="stmt" count="0"/>
-      <line num="170" type="stmt" count="2"/>
-      <line num="171" type="stmt" count="2"/>
-      <line num="172" type="stmt" count="2"/>
-      <line num="174" type="stmt" count="2"/>
-      <line num="177" type="stmt" count="0"/>
-      <line num="184" type="method" name="isWinner" visibility="public" complexity="3" crap="3" count="9"/>
+      <line num="145" type="stmt" count="9"/>
+      <line num="148" type="stmt" count="9"/>
+      <line num="158" type="method" name="equalWeight" visibility="private" complexity="4" crap="4.13" count="1"/>
+      <line num="160" type="stmt" count="1"/>
+      <line num="161" type="stmt" count="1"/>
+      <line num="162" type="stmt" count="1"/>
+      <line num="164" type="stmt" count="1"/>
+      <line num="165" type="stmt" count="0"/>
+      <line num="168" type="stmt" count="1"/>
+      <line num="169" type="stmt" count="1"/>
+      <line num="170" type="stmt" count="1"/>
+      <line num="172" type="stmt" count="1"/>
+      <line num="175" type="stmt" count="0"/>
+      <line num="182" type="method" name="isWinner" visibility="public" complexity="3" crap="3" count="9"/>
+      <line num="184" type="stmt" count="9"/>
+      <line num="185" type="stmt" count="9"/>
       <line num="186" type="stmt" count="9"/>
       <line num="187" type="stmt" count="9"/>
       <line num="188" type="stmt" count="9"/>
       <line num="189" type="stmt" count="9"/>
-      <line num="190" type="stmt" count="9"/>
-      <line num="191" type="stmt" count="9"/>
+      <line num="194" type="stmt" count="9"/>
       <line num="196" type="stmt" count="9"/>
-      <line num="198" type="stmt" count="9"/>
+      <line num="197" type="stmt" count="9"/>
       <line num="199" type="stmt" count="9"/>
-      <line num="201" type="stmt" count="9"/>
-      <line num="202" type="stmt" count="7"/>
-      <line num="203" type="stmt" count="9"/>
-      <line num="204" type="stmt" count="2"/>
-      <line num="207" type="stmt" count="9"/>
-      <metrics loc="210" ncloc="144" classes="1" methods="8" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="69" coveredstatements="67" elements="77" coveredelements="74"/>
+      <line num="200" type="stmt" count="8"/>
+      <line num="201" type="stmt" count="8"/>
+      <line num="202" type="stmt" count="1"/>
+      <line num="205" type="stmt" count="9"/>
+      <metrics loc="208" ncloc="144" classes="1" methods="8" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="69" coveredstatements="67" elements="77" coveredelements="74"/>
     </file>
     <file name="/home/bnbk/dbwebb-kurser/mvc/me/report/src/Controller/CardControllerJson.php">
       <class name="App\Controller\CardControllerJson" namespace="global">
@@ -688,6 +688,6 @@
       <line num="46" type="stmt" count="0"/>
       <metrics loc="79" ncloc="36" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="10" coveredelements="0"/>
     </file>
-    <metrics files="22" loc="1946" ncloc="1410" classes="21" methods="103" coveredmethods="49" conditionals="0" coveredconditionals="0" statements="452" coveredstatements="218" elements="555" coveredelements="267"/>
+    <metrics files="22" loc="1944" ncloc="1410" classes="21" methods="103" coveredmethods="49" conditionals="0" coveredconditionals="0" statements="452" coveredstatements="218" elements="555" coveredelements="267"/>
   </project>
 </coverage>
