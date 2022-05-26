@@ -65,7 +65,7 @@ class ProjectController extends AbstractController
         $entityManager = $doctrine->getManager();
         $player = new TexasEntity();
         $player->setRounds(0);
-        $player->setWinnings(100);
+        $player->setWinnings(0);
 
         $entityManager->persist($player);
 
@@ -97,6 +97,7 @@ class ProjectController extends AbstractController
         if ($newGame) {
             $player[0]->setRounds($oldRounds + 1);
             $texasHoldem->startGame(new Deck());
+            $texasHoldem->setMessage("Call or Fold");
         }
         if ($call) {
             $player[0]->setWinnings($oldWinnings - 30);
