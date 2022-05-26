@@ -76,12 +76,15 @@ class TexasRules
     * Two pairs == 2 * 2 + 2
     * Pairs == 2 * 2
     * Nothing == 1 * 1
-    * @param array<int, int> $hand as sorted array. ex (K K K A A == [3,2])
+    * @param array<int, int> $keyValueHand sorted by both key and value
     * @param boolean $isFlush as true if hand is a flush.
     * @return int for hand weight
     */
-    private function getWeight($hand, $isFlush)
+    private function getWeight($keyValueHand, $isFlush)
     {
+
+        $hand = array_values($keyValueHand);
+
         $handWeight = $hand[0] ** 2;
 
         if ($hand[0] == 3 && $hand[1] > 1) {
@@ -89,6 +92,8 @@ class TexasRules
         } elseif ($hand[0] == 2 && $hand[1] > 1) {
             $handWeight += 2;
         }
+
+        $handWeight = $this->handIsStraight($keyValueHand, $handWeight);
 
         if ($isFlush) {
             $handWeight = $this->handIsFlush($handWeight);
@@ -107,6 +112,40 @@ class TexasRules
         if ($weight < 11) {
             return 11;
         }
+        return $weight;
+    }
+
+    /**
+    * check if Straight is the highest weight.
+    * @param array<int, int> $player as < value, occurrences>
+    * @param int $weight as current weight
+    * @return int as the new weight
+    */
+    private function handIsStraight($player, $weight)
+    {
+        //var_dump($player, $weight); exit;
+        if ($weight > 10) {
+            return $weight;
+        }
+
+        $straightWeight = 10;
+        $straightCounter = 1;
+        $playerKeys = array_keys($player);
+        rsort($playerKeys);
+        $previousCard = $playerKeys[0];
+
+        foreach ($playerKeys as $card) {
+            if ($straightCounter == 5) {
+                return $straightWeight;
+            }
+            if (($previousCard - $card) == 1) {
+                $straightCounter += 1;
+                $previousCard = $card;
+                continue;
+            }
+            $straightCounter = 1;
+        }
+
         return $weight;
     }
 
@@ -133,7 +172,7 @@ class TexasRules
             }
             return ($playerKeys[$i] > $dealerKeys[$i]);
         }
-        // if empty array
+        // if both hands are 100% equal the player wins
         return true;
     }
 
@@ -149,12 +188,14 @@ class TexasRules
         krsort($dealer);
         arsort($player);
         arsort($dealer);
-        $playerOnlyCount = array_values($player);
-        $dealerOnlyCount = array_values($dealer);
+
+        //$playerOnlyCount = array_values($player);
+        //$dealerOnlyCount = array_values($dealer);
+
         $playerWon = false;
 
-        $playerWeight = $this->getWeight($playerOnlyCount, $this->playerFlush);
-        $dealerWeight = $this->getWeight($dealerOnlyCount, $this->dealerFlush);
+        $playerWeight = $this->getWeight($player, $this->playerFlush);
+        $dealerWeight = $this->getWeight($dealer, $this->dealerFlush);
 
         if ($playerWeight > $dealerWeight) {
             $playerWon = true;

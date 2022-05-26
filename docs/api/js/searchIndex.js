@@ -691,6 +691,11 @@ Search.appendIndex(
             "summary": "check\u0020if\u0020flush\u0020is\u0020the\u0020highest\u0020weight.",
             "url": "classes/App-Card-TexasRules.html#method_handIsFlush"
         },                {
+            "fqsen": "\\App\\Card\\TexasRules\u003A\u003AhandIsStraight\u0028\u0029",
+            "name": "handIsStraight",
+            "summary": "check\u0020if\u0020Straight\u0020is\u0020the\u0020highest\u0020weight.",
+            "url": "classes/App-Card-TexasRules.html#method_handIsStraight"
+        },                {
             "fqsen": "\\App\\Card\\TexasRules\u003A\u003AequalWeight\u0028\u0029",
             "name": "equalWeight",
             "summary": "Compare\u0020hands\u0020with\u0020equal\u0020weighted\u0020value.",
