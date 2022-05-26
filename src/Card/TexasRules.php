@@ -123,7 +123,6 @@ class TexasRules
     */
     private function handIsStraight($player, $weight)
     {
-        //var_dump($player, $weight); exit;
         if ($weight > 10) {
             return $weight;
         }

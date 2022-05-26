@@ -99,6 +99,30 @@ class TexasRulesTest extends TestCase
 
     /**
     * Construct object and verify that the function returns correct boolean
+    * for straight vs three of kind
+     */
+    public function testStraight()
+    {
+        //$valuePlayer = ['4', '5', '10', '11', '12', '13', '14'];
+        $valuePlayer = ['10', '11', '12', '13', '14', '5', '5'];
+        $valueDealer = ['2', '3', '4', '7', '7', '7', '10'];
+        $suit = ['clubs', 'clubs', 'clubs', 'clubs', 'spades',  'spades', 'hearts'];
+        $handPlayer = array();
+        $handDealer = array();
+        for ($i = 0; $i < 7; $i++) {
+            $handPlayer[] = new Card($valuePlayer[$i], $suit[$i]);
+            $handDealer[] = new Card($valueDealer[$i], $suit[$i]);
+        }
+
+        $rules = new TexasRules($handPlayer, $handDealer);
+        $this->assertTrue($rules->isWinner());
+
+        $rules = new TexasRules($handDealer, $handPlayer);
+        $this->assertNotTrue($rules->isWinner());
+    }
+
+    /**
+    * Construct object and verify that the function returns correct boolean
     * for three of a kind vs two pairs
      */
     public function testThreeOfaKind()
