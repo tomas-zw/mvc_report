@@ -3,8 +3,7 @@
 [![Build Status](https://scrutinizer-ci.com/g/tomas-zw/mvc_report/badges/build.png?b=main)](https://scrutinizer-ci.com/g/tomas-zw/mvc_report/build-status/main)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/tomas-zw/mvc_report/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
 
-Dett är ett projekt för kursen MVC. Ett Texas Hold'em för en spelare som håller 
-koll på antal rundor och total vinst.
+Ett Texas Hold'em för en spelare som håller koll på antal rundor och total vinst.
 
 Reglerna är enkla. Dealern får två gömda kort, spelaren får två kort och tre 
 kort visas på bordet. Spelaren får välja att fortsätta och då visas de två sista 
